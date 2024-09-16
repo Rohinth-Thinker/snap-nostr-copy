@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const ToolbarContainer = styled.ul`
-    width: 100px;
+    width: 85px;
+    height: max-content;
     border-radius: 8px;
     background-color: #272727;
-    padding: 20px 5px 5px 5px;
+    padding: 20px 5px 10px 5px;
     margin: none;
     list-style-type: none;
 
@@ -14,16 +15,17 @@ export const ToolbarContainer = styled.ul`
     gap: 10px;
 `;
 
-export const Tool = styled.li<{$withBackground?: boolean}>`
+export const Tool = styled.button<{$withBackground?: boolean}>`
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    width: 70px;
+    width: 90%;
     padding: 10px;
     border-radius: 5px;
     transition: background-color 0.1s;
+    border: none;
 
     background: ${props => props.$withBackground ? 'linear-gradient(45deg, #CE66FF, #FE983B)': 'transparent' };
 
