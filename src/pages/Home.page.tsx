@@ -1,8 +1,11 @@
+import { Header } from "../components/Header/Header";
+import { HomePageContainer } from "./HomePage.styled";
+
 function HomePage() {
     return (
-      <main>
-        <h1>Snap nostr :)</h1>
-      </main>
+      <HomePageContainer>
+        <Header/>
+      </HomePageContainer>
     );
   }
   
