@@ -5,3 +5,40 @@ export function SearchIcon() {
         </svg>
     );
 }
+
+
+type HeartIconProps = {
+    isSelected?: boolean;
+};
+
+export function HeartIcon({
+    isSelected = true,
+}: HeartIconProps) {
+    return (
+        <svg width="30" height="30" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 54.095H29.965C23.5075 53.975 4.87503 37.14 4.87503 21.195C4.87503 13.535 11.1875 6.81 18.3825 6.81C24.1075 6.81 27.9575 10.76 29.9975 13.635C32.0325 10.765 35.8825 6.81 41.61 6.81C48.81 6.81 55.12 13.535 55.12 21.1975C55.12 37.1375 36.485 53.9725 30.0275 54.09H30V54.095Z" fill={isSelected ? "white": 'none'}/>
+            <path d="M30 54.095H29.965C23.5075 53.975 4.87503 37.14 4.87503 21.195C4.87503 13.535 11.1875 6.81 18.3825 6.81C24.1075 6.81 27.9575 10.76 29.9975 13.635C32.0325 10.765 35.8825 6.81 41.61 6.81C48.81 6.81 55.12 13.535 55.12 21.1975C55.12 37.1375 36.485 53.9725 30.0275 54.09H30V54.095ZM18.385 10.5625C13.185 10.5625 8.62753 15.5325 8.62753 21.2C8.62753 35.55 26.2125 50.19 30.0025 50.345C33.7975 50.19 51.3775 35.5525 51.3775 21.2C51.3775 15.5325 46.82 10.5625 41.62 10.5625C35.3 10.5625 31.77 17.9025 31.74 17.975C31.165 19.38 28.85 19.38 28.2725 17.975C28.2375 17.9 24.7075 10.5625 18.385 10.5625Z" fill="white" stroke="white" stroke-width="0.520833"/>
+        </svg>
+    );
+}
+
+
+export function CopyIcon() {
+    return (
+        <svg width="30" height="30" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 22.5H27.5C24.7386 22.5 22.5 24.7386 22.5 27.5V50C22.5 52.7614 24.7386 55 27.5 55H50C52.7614 55 55 52.7614 55 50V27.5C55 24.7386 52.7614 22.5 50 22.5Z" fill="white" stroke="white" stroke-width="2.08333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.5 37.5H10C8.67392 37.5 7.40215 36.9732 6.46447 36.0355C5.52678 35.0978 5 33.8261 5 32.5V10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5H32.5C33.8261 5 35.0978 5.52678 36.0355 6.46447C36.9732 7.40215 37.5 8.67392 37.5 10V12.5" stroke="white" stroke-width="2.08333" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    );
+}
+
+
+export function DownloadIcon() {
+    return (
+        <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M35 25V31.6667C35 32.5507 34.6488 33.3986 34.0237 34.0237C33.3986 34.6488 32.5507 35 31.6667 35H8.33333C7.44928 35 6.60143 34.6488 5.97631 34.0237C5.35119 33.3986 5 32.5507 5 31.6667V25" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11.6667 16.6667L20 25L28.3333 16.6667" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 25V5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    );
+}
