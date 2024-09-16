@@ -12,4 +12,8 @@ export const StyledHelpButton = styled.button`
     &:hover {
         background-color: rgba(39,39,40,1);
     }
+
+    &:focus {
+        outline: #CE66FF solid 2px;
+    }
 `;
