@@ -5,9 +5,10 @@ export const SearchBarContainer = styled.label`
     border: 1px solid #71717187;
     border-radius: 8px;
     padding: 5px 40px;
-    width: 400px;
+    width: 475px;
     height: 40px;
     box-shadow: 0 25px 40px 11px #00000040;
+    transform: translateX(-10%);
 
     display: flex;
     align-items: center;
@@ -23,7 +24,7 @@ export const SearchBarContainer = styled.label`
 
     &:focus-within {
         padding-left: 10px;
-        width: 430px;
+        width: 495x;
         outline: #CE66FF solid 2px;
     }
 `;
