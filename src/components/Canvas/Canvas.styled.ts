@@ -124,7 +124,7 @@ export const BackgroundGradient = styled.div`
   background-repeat: no-repeat;
 `;
 
-export const CardBlurShadow = styled.div`
+export const CardBlurShadow = styled.div<{width: number, height: number}>`
   ${AbsoluteFull}
   background-image: linear-gradient(310deg, 
     rgb(214, 233, 255), rgb(214, 229, 255), 
@@ -132,7 +132,7 @@ export const CardBlurShadow = styled.div`
     rgb(243, 209, 255), rgb(255, 204, 245), 
     rgb(255, 204, 223), rgb(255, 200, 199), 
     rgb(255, 216, 199), rgb(255, 221, 199));
-  background-size: 800px 460px; // TODO: Change it dynamic
+  background-size: ${props => `${props.width}px ${props.height}px`};
   border-radius: 1em;
   z-index: 0;
 

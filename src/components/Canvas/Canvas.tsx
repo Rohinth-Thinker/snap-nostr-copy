@@ -1,3 +1,4 @@
+import { LegacyRef, useEffect, useRef, useState } from "react";
 import { VerificationCheck } from "../Icon/Icon";
 import {
   AuthorImage,
@@ -25,21 +26,41 @@ import {
   VerificationCheckContainer,
   VerificationIconContainer,
 } from "./Canvas.styled";
+import useResizable from "../../hooks/use-resizable";
 
 export function Canvas() {
+  const cardWrapperRef = useRef<HTMLDivElement>(null);
+  const leftResizeKnob = useRef<HTMLDivElement>(null);
+  const rightResizeKnob = useRef<HTMLDivElement>(null);
+  const bottomResizeKnob = useRef<HTMLDivElement>(null);
+
+  const { width, height } = useResizable({
+    cardWrapperRef,
+    leftResizeKnob,
+    rightResizeKnob,
+    bottomResizeKnob,
+    initialWidth: 800,
+    initialHeight: 460,
+  });
+
   return (
     <CanvasContainer>
-      <CardWrapper>
+      <CardWrapper
+        ref={cardWrapperRef}
+        style={{
+          width,
+        }}
+      >
         <ResizeKnobs>
-            <ResizeKnobContainer $position={ResizeKnobPosition.left}>
+            <ResizeKnobContainer ref={leftResizeKnob} $position={ResizeKnobPosition.left}>
                 <ResizeKnob></ResizeKnob>
             </ResizeKnobContainer>
 
-            <ResizeKnobContainer $position={ResizeKnobPosition.right}>
+            <ResizeKnobContainer ref={rightResizeKnob} $position={ResizeKnobPosition.right}>
                 <ResizeKnob></ResizeKnob>
             </ResizeKnobContainer>
 
-            <ResizeKnobContainer $position={ResizeKnobPosition.bottom}>
+            <ResizeKnobContainer ref={bottomResizeKnob} $position={ResizeKnobPosition.bottom}>
                 <ResizeKnob></ResizeKnob>
             </ResizeKnobContainer>
         </ResizeKnobs>
@@ -49,7 +70,10 @@ export function Canvas() {
             <div
               style={{ maxWidth: "39rem", width: "100%", position: "relative" }}
             >
-              <CardBlurShadow />
+              <CardBlurShadow
+                width={width}
+                height={height}
+              />
               <CardContentContainer>
                 <InnerGradient />
                 <AuthorInfo>
