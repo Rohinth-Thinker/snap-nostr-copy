@@ -1,8 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Divider = styled.hr`
     display: block;
     width: 100%;
     color: #3b3b3b;
     border: 0.5px solid;
+`;
+
+export const AbsoluteFull = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
