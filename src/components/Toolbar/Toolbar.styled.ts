@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ToolbarContainer = styled.ul`
-    width: 85px;
+    width: 100px;
     height: max-content;
     border-radius: 8px;
     background-color: #272727;
