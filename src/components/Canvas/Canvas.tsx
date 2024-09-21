@@ -1,4 +1,4 @@
-import { LegacyRef, useEffect, useRef, useState } from "react";
+import { forwardRef, useRef } from "react";
 import { VerificationCheck } from "../Icon/Icon";
 import {
   AuthorImage,
@@ -28,7 +28,7 @@ import {
 } from "./Canvas.styled";
 import useResizable from "../../hooks/use-resizable";
 
-export function Canvas() {
+export const Canvas = forwardRef<HTMLDivElement>((_, ref) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftResizeKnob = useRef<HTMLDivElement>(null);
   const rightResizeKnob = useRef<HTMLDivElement>(null);
@@ -64,7 +64,7 @@ export function Canvas() {
                 <ResizeKnob></ResizeKnob>
             </ResizeKnobContainer>
         </ResizeKnobs>
-        <CardContainer>
+        <CardContainer ref={ref}>
           <CardContent>
             <BackgroundGradient />
             <div
@@ -77,7 +77,7 @@ export function Canvas() {
               <CardContentContainer>
                 <InnerGradient />
                 <AuthorInfo>
-                  <AuthorImage src="https://primal.b-cdn.net/media-cache?s=o&a=0&u=https%3A%2F%2Fimage.nostr.build%2F69b1c2c1510528e4e24b938679d66d84e34346808f5c52daf4ee794d24f82fd2.jpg" />
+                  <AuthorImage src="https://pbs.twimg.com/profile_images/1447137435033370628/VkaQ2C0f_400x400.jpg" />
                   <AuthorNameAndNip05Container>
                     <AuthorNameContainer>
                         <AuthorName>DJ Hemath</AuthorName>
@@ -116,4 +116,4 @@ export function Canvas() {
       </CardWrapper>
     </CanvasContainer>
   );
-}
+})

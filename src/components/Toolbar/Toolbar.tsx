@@ -2,7 +2,13 @@ import { Divider } from "../../shared/Global.styled";
 import { CopyIcon, DownloadIcon, HeartIcon } from "../Icon/Icon";
 import { ColorTool, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
 
-export function Toolbar() {
+export type ToolbarProps = {
+    onDownload: () => void,
+};
+
+export function Toolbar({
+    onDownload,
+}: ToolbarProps) {
     return (
         <ToolbarContainer>
             <Tool>
@@ -15,6 +21,8 @@ export function Toolbar() {
                 <ToolName>Response</ToolName>
             </Tool>
 
+            {/* TODO: Add a button to configure relays */}
+
             <Divider />
 
             <Tool>
@@ -22,7 +30,7 @@ export function Toolbar() {
                 <ToolName>Copy</ToolName>
             </Tool>
 
-            <Tool $withBackground>
+            <Tool $withBackground onClick={onDownload}>
                 <DownloadIcon />
                 <ToolName>Download</ToolName>
             </Tool>
