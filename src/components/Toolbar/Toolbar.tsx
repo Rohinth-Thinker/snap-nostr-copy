@@ -4,10 +4,12 @@ import { ColorTool, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
 
 export type ToolbarProps = {
     onDownload: () => void,
+    onCopy: () => void,
 };
 
 export function Toolbar({
     onDownload,
+    onCopy,
 }: ToolbarProps) {
     return (
         <ToolbarContainer>
@@ -25,7 +27,7 @@ export function Toolbar({
 
             <Divider />
 
-            <Tool>
+            <Tool onClick={onCopy}>
                 <CopyIcon />
                 <ToolName>Copy</ToolName>
             </Tool>

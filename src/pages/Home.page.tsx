@@ -5,7 +5,7 @@ import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
 import { Toolbar } from "../components/Toolbar/Toolbar";
 import { HomePageContainer, MainSection } from "./HomePage.styled";
-import { downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
+import { copyDataURL, downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
@@ -20,12 +20,23 @@ function HomePage() {
     }
   }
 
+  function onCopy() {
+    const cardEl = canvasCardRef.current;
+
+    if (cardEl) {
+      getDataURLFromHTMLDOM(cardEl).then(copyDataURL);
+    }
+  }
+
   return (
     <HomePageContainer>
       <Header />
 
       <MainSection>
-        <Toolbar onDownload={onDownload} />
+        <Toolbar
+          onDownload={onDownload}
+          onCopy={onCopy}
+        />
 
         <Canvas ref={canvasCardRef} />
       </MainSection>
