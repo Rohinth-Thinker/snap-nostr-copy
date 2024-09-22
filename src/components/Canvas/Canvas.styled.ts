@@ -253,6 +253,7 @@ export const TweetContent = styled.div`
   margin-bottom: 1em;
   pointer-events: none;
   font-weight: 500;
+  word-break: break-word;
 `;
 
 export const TweetTimestamp = styled.div`
