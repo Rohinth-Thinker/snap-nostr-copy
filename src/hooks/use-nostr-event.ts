@@ -2,42 +2,65 @@ import { useEffect, useState } from "react";
 
 import NDK from "@nostr-dev-kit/ndk";
 
-import { parseText, getHTML } from "../shared/nostr.util";
+import { parseText, getHTML, validateAndGetMatchedNostrEventBech32 } from "../shared/nostr.util";
+import { useNoteContext } from "../contexts/note.context";
 
-export function useNostrEvent(noteId: string) {    
-    const [ noteHTML, setNoteHTML ] = useState('');
+
+export function useNostrEvent(noteId: string) {
+    const bech32 = validateAndGetMatchedNostrEventBech32(noteId);
+
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [ isError, setIsError ] = useState(false);
+
+    const { setNote } = useNoteContext();
+
     useEffect(() => {
-        async function parseNostrNote(nodeId: string) {
-            const ndk = new NDK({
-                explicitRelayUrls: [
-                "wss://relay.damus.io",
-                "wss://nostr.wine",
-                "wss://relay.nostr.net",
-                "wss://nos.lol",
-                "wss://nostr-pub.wellorder.net",
-                "wss://njump.me",
-                "wss://relay.primal.net",
-                ],
-            });
-            
-            await ndk.connect();
+        async function fetchNote(nodeId: string) {
+            setIsLoading(true);
 
-            const post = await ndk.fetchEvent(nodeId);
-            const author = await post?.author.fetchProfile();
+            try {
+                const ndk = new NDK({
+                    explicitRelayUrls: [
+                    "wss://relay.damus.io",
+                    "wss://nostr.wine",
+                    "wss://relay.nostr.net",
+                    "wss://nos.lol",
+                    "wss://nostr-pub.wellorder.net",
+                    "wss://njump.me",
+                    "wss://relay.primal.net",
+                    ],
+                });
+                
+                await ndk.connect();
+        
+                const post = await ndk.fetchEvent(nodeId);
+                const author = await post?.author.fetchProfile();
+        
+                const content = post?.content ||  '';
+                const parsedContent = await parseText(content);
+                const htmlToRender = getHTML(parsedContent);
+        
+                setNote({
+                    html: htmlToRender,
+                    author: author,
+                });
+                setIsError(false);
 
-            const content = post?.content ||  '';
-            console.log(content);
-            const parsedContent = await parseText(content);
-            const htmlToRender = getHTML(parsedContent);
-
-            setNoteHTML(htmlToRender);
+            } catch(err) {
+                setIsError(true);
+            } finally {
+                setIsLoading(false);
+            }
         }
 
-        parseNostrNote(noteId);
-    }, []);
+        if(bech32) {
+            fetchNote(bech32);
+        }
+    }, [noteId]);
 
     return {
-        noteHTML,
+        isInvalid: !bech32,
+        isError,
+        isLoading,
     };
-
 }
