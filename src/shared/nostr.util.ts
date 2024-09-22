@@ -1,5 +1,5 @@
 import NDK from "@nostr-dev-kit/ndk";
-import { nip21 } from "nostr-tools";
+import { nip19, nip21 } from "nostr-tools";
 import { ProfilePointer } from "nostr-tools/nip19";
 import { defaultImgProxy } from "./constants";
 import { proxyImg } from "./utils";
@@ -176,3 +176,48 @@ export function getHTML(content: any[]) {
   return styles + html.join("");
 }
 
+export function getNip19Bech32RegexMatch(text: string) {
+  return text.match(nip19.BECH32_REGEX);
+}
+
+export function validateAndGetMatchedNostrEventBech32(text: string) {
+  if(!text) return false;
+
+  let bech32 = ''
+
+  if(text.startsWith('http') || text.startsWith('https')) {
+    const fragments = text.split('/');
+    
+    for(let i=0; i<fragments.length; i++) {
+      const fragment = fragments[i];
+      const match = getNip19Bech32RegexMatch(fragment);
+
+      if(match !== null) {
+        bech32 = match[0];
+      }
+    }
+
+  } else {
+    const match = getNip19Bech32RegexMatch(text);
+
+    if(match !== null) {
+      bech32 = match[0];
+    }
+  }
+
+  if(bech32 === '') {
+    return false;
+  }
+
+  try {
+    const result = nip19.decode(bech32)
+    
+    if(result.type === 'nevent' || result.type === 'note') {
+      return bech32;
+    }
+
+    return false;
+  } catch(err) {
+    return false;
+  }
+}
