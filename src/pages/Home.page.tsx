@@ -6,9 +6,12 @@ import { Header } from "../components/Header/Header";
 import { Toolbar } from "../components/Toolbar/Toolbar";
 import { HomePageContainer, MainSection } from "./HomePage.styled";
 import { copyDataURL, downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
+import { useNoteContext } from "../contexts/note.context";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
+
+  const { note } = useNoteContext();
 
   function onDownload() {
     const cardEl = canvasCardRef.current;
@@ -30,7 +33,7 @@ function HomePage() {
 
   return (
     <HomePageContainer>
-      <Header />
+      <Header/>
 
       <MainSection>
         <Toolbar
@@ -38,7 +41,10 @@ function HomePage() {
           onCopy={onCopy}
         />
 
-        <Canvas ref={canvasCardRef} />
+        <Canvas
+          ref={canvasCardRef}
+          noteHTML={note.html}
+        />
       </MainSection>
 
       <Footer />

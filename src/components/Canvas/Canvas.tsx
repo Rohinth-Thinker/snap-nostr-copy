@@ -28,7 +28,11 @@ import {
 } from "./Canvas.styled";
 import useResizable from "../../hooks/use-resizable";
 
-export const Canvas = forwardRef<HTMLDivElement>((_, ref) => {
+export type CanvasProps = {
+  noteHTML: string,
+};
+
+export const Canvas = forwardRef<HTMLDivElement, CanvasProps>((props, ref) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftResizeKnob = useRef<HTMLDivElement>(null);
   const rightResizeKnob = useRef<HTMLDivElement>(null);
@@ -90,10 +94,9 @@ export const Canvas = forwardRef<HTMLDivElement>((_, ref) => {
                     <AuthorNip05>djhemath@iris.io</AuthorNip05>
                   </AuthorNameAndNip05Container>
                 </AuthorInfo>
-                <TweetContent>
-                  Every informed person needs to know about Bitcoin because it
-                  might be one of the world's most important developments.
-                </TweetContent>
+                <TweetContent dangerouslySetInnerHTML={{
+                  __html: props.noteHTML,
+                }} />
                 <TweetTimestamp>4:32 PM · 16 Sep, 2024</TweetTimestamp>
                 <TweetStats>
                   <StatItem>
