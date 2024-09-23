@@ -7,4 +7,8 @@ An open-source alternative of [poet.so](https://poet.so) but for [Nostr](https:/
 - [ ] Add lightning wallet for donations
 - [ ] Write a better parser
 - [ ] Add measuring scale for horizontal and vertical resizing like poet.so
+- [ ] Add content to the help button
+- [ ] Light - Dark modes
+- [ ] More gradients and styles for the card
+- [ ] Feature to add custom set of relays
 
