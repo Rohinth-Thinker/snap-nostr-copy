@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const SearchBarWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 17px;
+`;
+
 export const SearchBarContainer = styled.label`
     background-color: #272727;
     border: 1px solid #71717187;
@@ -22,10 +29,15 @@ export const SearchBarContainer = styled.label`
         border: 1px solid #717171;
     }
 
-    &:focus-within {
-        padding-left: 10px;
+    &:has(input:focus) {
         outline: #CE66FF solid 2px;
     }
+
+    &:focus-within, &:has(input:not(:placeholder-shown)) {
+        padding-left: 10px;
+    }
+
+    position: relative;
 `;
 
 
@@ -36,10 +48,53 @@ export const SearchBarForm = styled.form`
 
 export const SearchInput = styled.input`
     border: none;
-    background-color: transparent;
+    background-color: transparent !important;
     height: 100%;
     width: 100%;
     font-size: 16px;
     outline: none;
     color: #FFF;
+`;
+
+export const HelperText = styled.small`
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 17px;
+    color: #ffffff80;
+    transform: translateX(-10%);
+    font-weight: bold;
+`;
+
+export const ErrorText = styled(HelperText)`
+    color: #f87171;
+`;
+
+export const SearchBarProgressContainer = styled.div`
+    position: absolute;
+    inset: 3px 3px 1px;
+    border-radius: .5rem;
+    overflow: hidden;
+    pointer-events: none;
+    width: 100.5%;
+    left: -2px;
+    bottom: 0px;
+`;
+
+export const SearchBarProgress = styled.div`
+    background: #27c4f5 linear-gradient(to right,#CE66FF,#FE983B);
+    -webkit-animation: 3s linear infinite rainbow,.5s ease-out enter;
+    animation: 3s linear infinite rainbow,.5s ease-out enter;
+    transition: opacity .3s ease-in-out;
+    transform-origin: left;
+    background-size: 500%;
+    z-index: 999999;
+    position: absolute;
+    display: block;
+    width: 100%;
+    opacity: 1;
+    left: 0;
+    bottom: 0;
+    height: 2px;
 `;

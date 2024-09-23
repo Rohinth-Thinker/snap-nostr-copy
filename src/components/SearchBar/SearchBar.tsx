@@ -1,14 +1,63 @@
+import { useRef } from "react";
+
 import { SearchIcon } from "../Icon/Icon";
-import { SearchBarContainer, SearchBarForm, SearchInput } from "./SearchBar.styled";
+import { ErrorText, HelperText, SearchBarContainer, SearchBarForm, SearchBarProgress, SearchBarProgressContainer, SearchBarWrapper, SearchInput } from "./SearchBar.styled";
+import { useSearchInput } from "./hooks/use-search-input";
 
 export function SearchBar() {
-    return (
-        <SearchBarContainer>
-            <SearchIcon />
+    const {
+        helperMessage,
+        isLoading,
+        isAnimate,
+        onInputBlur,
+        onInputChange,
+        onInputFocus,
+        onPaste,
+        onSubmit,
+    } = useSearchInput();
 
-            <SearchBarForm>
-              <SearchInput type="text" placeholder="Paste event id, primal, damus, iris app link here" />
-            </SearchBarForm>
-        </SearchBarContainer>
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    if(inputRef.current && isLoading) {
+        inputRef.current.blur();
+    }
+
+    return (
+        <SearchBarWrapper className={isAnimate ? 'shake': ''}>
+            <SearchBarContainer>
+                <SearchIcon />
+
+                <SearchBarForm
+                    onSubmit={onSubmit}
+                >
+                    <SearchInput
+                        type="text"
+                        placeholder="Paste nostr event id, primal, damus, iris or snort link here"
+                        autoComplete="off"
+                        ref={inputRef}
+                        onChange={onInputChange}
+                        onPaste={onPaste}
+                        onBlur={onInputBlur}
+                        onFocus={onInputFocus}
+                    />
+                    {
+                        isLoading
+                        ? (
+                            <SearchBarProgressContainer>
+                                <SearchBarProgress />
+                            </SearchBarProgressContainer>
+                          )
+                        : null
+                    }
+                    
+                </SearchBarForm>
+            </SearchBarContainer>
+
+            {
+                helperMessage.message && helperMessage.type === 'error'
+                ? <ErrorText>{helperMessage.message}</ErrorText>
+                : <HelperText>{helperMessage.message}</HelperText>
+            }
+        </SearchBarWrapper>
     );
 }

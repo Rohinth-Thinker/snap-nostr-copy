@@ -25,3 +25,59 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+.shake {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-name: headShake;
+  animation-name: headShake;
+}
+
+@keyframes headShake {
+  0% {
+    transform: translate(0)
+  }
+
+  12.5% {
+      transform: translate(-5px) rotateY(-8deg)
+  }
+
+  37.5% {
+      transform: translate(4px) rotateY(6deg)
+  }
+
+  62.5% {
+      transform: translate(-2px) rotateY(-4deg)
+  }
+
+  87.5% {
+      transform: translate(1px) rotateY(2deg)
+  }
+
+  100% {
+    transform: translate(0)
+  }
+}
+
+
+@keyframes rainbow {
+  0% {
+      background-position: 0% 0
+  }
+
+  to {
+      background-position: 125% 0
+  }
+}
+
+@keyframes enter {
+  0% {
+      transform: scaleX(0)
+  }
+
+  to {
+      transform: scaleX(1)
+  }
+}
