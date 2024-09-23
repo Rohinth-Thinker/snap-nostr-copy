@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 
 import NDK from "@nostr-dev-kit/ndk";
 
-import { parseText, getHTML, validateAndGetMatchedNostrEventBech32 } from "../shared/nostr.util";
+import { parseText, getHTML } from "../shared/nostr.util";
 import { useNoteContext } from "../contexts/note.context";
 
 
-export function useNostrEvent(noteId: string) {
-    const bech32 = validateAndGetMatchedNostrEventBech32(noteId);
-
+export function useNostrEvent(bech32: string) {
     const [ isLoading, setIsLoading ] = useState(false);
     const [ isError, setIsError ] = useState(false);
 
@@ -56,10 +54,9 @@ export function useNostrEvent(noteId: string) {
         if(bech32) {
             fetchNote(bech32);
         }
-    }, [noteId]);
+    }, [bech32]);
 
     return {
-        isInvalid: !bech32,
         isError,
         isLoading,
     };
