@@ -37,10 +37,17 @@ export function useNostrEvent(bech32: string) {
                 const content = post?.content ||  '';
                 const parsedContent = await parseText(content);
                 const htmlToRender = getHTML(parsedContent);
+
+                // TODO: Get stats
         
                 setNote({
                     html: htmlToRender,
                     author: author,
+                    createdAt: post?.created_at || 0,
+                    replies: 0,
+                    zaps: 0,
+                    likes: 0,
+                    reposts: 0,
                 });
                 setIsError(false);
 

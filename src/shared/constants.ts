@@ -9,13 +9,24 @@ export const defaultImgProxy = {
 export type NostrNote = {
   html: string,
   author?: NDKUserProfile | null,
+  createdAt: number,
+  replies: number,
+  zaps: number,
+  likes: number,
+  reposts: number,
 };
 
 // TODO: Improve the initial note. Make it some classy note in the Nostr arena!
 export const initialNote: NostrNote = {
   html: '<span class="text-content">Just setting up my nstr!</span>',
   author: {
-    displayName: "djhemath",
-    image: "",
+    name: "djhemath",
+    nip05: 'djhemath@iris.to',
+    image: "https://pbs.twimg.com/profile_images/1447137435033370628/VkaQ2C0f_400x400.jpg",
   },
+  createdAt: 0,
+  replies: 41000,
+  zaps: 284,
+  likes: 7200,
+  reposts: 6500,
 };

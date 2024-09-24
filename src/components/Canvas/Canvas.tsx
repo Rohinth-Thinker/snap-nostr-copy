@@ -1,4 +1,7 @@
 import { forwardRef, useRef } from "react";
+
+import dayjs from "dayjs";
+
 import { VerificationCheck } from "../Icon/Icon";
 import {
   AuthorImage,
@@ -27,12 +30,18 @@ import {
   VerificationIconContainer,
 } from "./Canvas.styled";
 import useResizable from "../../hooks/use-resizable";
+import { NostrNote } from "../../shared/constants";
+import { toReadableStatsFormat } from "../../shared/utils";
 
 export type CanvasProps = {
   noteHTML: string,
+  note: NostrNote
 };
 
-export const Canvas = forwardRef<HTMLDivElement, CanvasProps>((props, ref) => {
+export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
+  noteHTML,
+  note,
+}, ref) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftResizeKnob = useRef<HTMLDivElement>(null);
   const rightResizeKnob = useRef<HTMLDivElement>(null);
@@ -81,35 +90,35 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>((props, ref) => {
               <CardContentContainer>
                 <InnerGradient />
                 <AuthorInfo>
-                  <AuthorImage src="https://pbs.twimg.com/profile_images/1447137435033370628/VkaQ2C0f_400x400.jpg" />
+                  <AuthorImage src={note.author?.image} />
                   <AuthorNameAndNip05Container>
                     <AuthorNameContainer>
-                        <AuthorName>DJ Hemath</AuthorName>
+                        <AuthorName>{note.author?.name}</AuthorName>
                         <VerificationCheckContainer>
                             <VerificationIconContainer>
                                 <VerificationCheck />
                             </VerificationIconContainer>
                         </VerificationCheckContainer> 
                     </AuthorNameContainer>
-                    <AuthorNip05>djhemath@iris.io</AuthorNip05>
+                    <AuthorNip05>{note.author?.nip05}</AuthorNip05>
                   </AuthorNameAndNip05Container>
                 </AuthorInfo>
                 <TweetContent dangerouslySetInnerHTML={{
-                  __html: props.noteHTML,
+                  __html: noteHTML,
                 }} />
-                <TweetTimestamp>4:32 PM · 16 Sep, 2024</TweetTimestamp>
+                <TweetTimestamp>{dayjs(note.createdAt * 1000).format('hh:mm A')} · {dayjs(note.createdAt * 1000).format('DD MMM, YYYY')}</TweetTimestamp>
                 <TweetStats>
                   <StatItem>
-                    <span>4.1K</span> replies
+                    <span>{toReadableStatsFormat(note.replies)}</span> replies
                   </StatItem>
                   <StatItem>
-                    <span>284</span> zaps
+                    <span>{toReadableStatsFormat(note.zaps)}</span> zaps
                   </StatItem>
                   <StatItem>
-                    <span>7.2K</span> likes
+                    <span>{toReadableStatsFormat(note.likes)}</span> likes
                   </StatItem>
                   <StatItem>
-                    <span>7.2K</span> reposts
+                    <span>{toReadableStatsFormat(note.reposts)}</span> reposts
                   </StatItem>
                 </TweetStats>
               </CardContentContainer>

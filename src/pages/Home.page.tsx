@@ -44,6 +44,7 @@ function HomePage() {
         <Canvas
           ref={canvasCardRef}
           noteHTML={note.html}
+          note={note}
         />
       </MainSection>
 
