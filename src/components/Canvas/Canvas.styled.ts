@@ -13,8 +13,8 @@ export const CanvasContainer = styled.div`
 
 export const CardWrapper = styled.div`
   position: relative;
-  width: 800px;
-  height: 460px;
+  // width: 800px;
+  // height: 460px;
 `;
 
 export const ResizeKnobs = styled.div`
