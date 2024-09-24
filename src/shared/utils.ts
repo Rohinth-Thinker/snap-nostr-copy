@@ -1,4 +1,6 @@
 import * as htmlToImage from "html-to-image";
+import numeral from 'numeral';
+
 import { hmacSha256, hexToBytes, base64Encode } from "./crypto.utils";
 
 export async function getDataURLFromHTMLDOM(
@@ -78,4 +80,8 @@ export function proxyImg(url: string, settings: ImgProxySettings, resize?: numbe
   const path = `/${opts.join("/")}/${urlEncoded}`;
   const sig = signUrl(path);
   return `${new URL(settings.url).toString()}${sig}${path}`;
+}
+
+export function toReadableStatsFormat(number: number ) {
+  return numeral(number).format('0.0a').replace('.0', '');
 }
