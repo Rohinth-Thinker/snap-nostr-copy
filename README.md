@@ -11,4 +11,7 @@ An open-source alternative of [poet.so](https://poet.so) but for [Nostr](https:/
 - [ ] Light - Dark modes
 - [ ] More gradients and styles for the card
 - [ ] Feature to add custom set of relays
-
+- [ ] Implement "Response" toggle feature
+- [ ] Responsiveness
+- [ ] Github link for this project
+ 
