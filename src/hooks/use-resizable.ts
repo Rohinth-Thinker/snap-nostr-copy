@@ -65,8 +65,11 @@ const useResizable = ({
     }
 
     if (cardWrapperRef.current) {
-      cardWrapperRef.current.style.width = Math.max(newWidthRef.current, 50) + 'px';
-      cardWrapperRef.current.style.height = Math.max(newHeightRef.current, 50) + 'px';
+      if(knobRef.current === ResizeKnobPosition.left || knobRef.current === ResizeKnobPosition.right) {
+        cardWrapperRef.current.style.width = Math.max(newWidthRef.current, 50) + 'px';
+      } else if(knobRef.current === ResizeKnobPosition.bottom) {
+        cardWrapperRef.current.style.height = Math.max(newHeightRef.current, 50) + 'px';
+      }
     }
   };
 
