@@ -22,6 +22,13 @@ export function useSearchInput() {
     const { isAnimate, addShakeAnimation } = useShakeAnimation(isError);
 
     useEffect(() => {
+        setHelperMessage({
+            type: 'info',
+            message: '',
+        });
+    }, [isLoading]);
+
+    useEffect(() => {
         if(isError) {
             setHelperMessage({
                 type: 'error',
@@ -67,7 +74,7 @@ export function useSearchInput() {
                 message: '',
             });
         } else {
-            if(helperMessage.message !== pressEnterToFindNote) {
+            if(helperMessage.message !== pressEnterToFindNote && !isLoading) {
                 setHelperMessage({
                     type: 'info',
                     message: pressEnterToFindNote,
@@ -86,7 +93,7 @@ export function useSearchInput() {
     }
 
     function onInputFocus(e: React.FocusEvent) {
-        if(helperMessage.message === '' && (e.target as HTMLInputElement).value !== '') {
+        if(helperMessage.message === '' && (e.target as HTMLInputElement).value !== '' && !isLoading) {
             setHelperMessage({
                 type: 'info',
                 message: pressEnterToFindNote,
