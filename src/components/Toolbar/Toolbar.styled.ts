@@ -29,6 +29,7 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
     border-radius: 5px;
     transition: background-color 0.1;
     border: none;
+    position: relative;
 
     background: ${props => props.$withBackground ? 'linear-gradient(45deg, #CE66FF, #FE983B)': 'transparent' };
 

@@ -5,7 +5,7 @@ export const GradientPickerStyled = styled.div`
 
     position: absolute;
     left: 10px;
-    top: 20px;
+    top: 0px;
 
     background-color: #222;
     box-shadow: 0 0 15px #444;
