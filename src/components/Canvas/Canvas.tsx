@@ -30,8 +30,8 @@ import {
   VerificationIconContainer,
 } from "./Canvas.styled";
 import useResizable from "../../hooks/use-resizable";
-import { NostrNote } from "../../shared/constants";
-import { toReadableStatsFormat } from "../../shared/utils";
+import { defaultImgProxy, NostrNote } from "../../shared/constants";
+import { proxyImg, toReadableStatsFormat } from "../../shared/utils";
 
 export type CanvasProps = {
   noteHTML: string,
@@ -90,7 +90,7 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
               <CardContentContainer>
                 <InnerGradient />
                 <AuthorInfo>
-                  <AuthorImage src={note.author?.image} />
+                  <AuthorImage src={proxyImg(note.author?.image || '', defaultImgProxy)} />
                   <AuthorNameAndNip05Container>
                     <AuthorNameContainer>
                         <AuthorName>{note.author?.name}</AuthorName>
