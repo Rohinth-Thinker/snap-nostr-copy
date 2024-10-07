@@ -27,7 +27,7 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
     width: 90%;
     padding: 10px;
     border-radius: 5px;
-    transition: background-color 0.1s;
+    transition: background-color 0.1;
     border: none;
 
     background: ${props => props.$withBackground ? 'linear-gradient(45deg, #CE66FF, #FE983B)': 'transparent' };
@@ -45,6 +45,10 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
         opacity: 1;
         pointer-events: auto;
         transform: translateY(-100%);
+    }
+
+    &:active svg, &:active > div {
+        transform: scale(0.8);
     }
 `;
 
