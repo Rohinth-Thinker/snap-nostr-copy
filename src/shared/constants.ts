@@ -30,3 +30,6 @@ export const initialNote: NostrNote = {
   likes: 7200,
   reposts: 6500,
 };
+
+
+export const MILLISATS_PER_SAT = 1000;
