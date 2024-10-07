@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Canvas } from "../components/Canvas/Canvas";
 import { Footer } from "../components/Footer/Footer";
@@ -10,6 +10,7 @@ import { useNoteContext } from "../contexts/note.context";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
+  const [ showResponse, setShowResponse ] = useState(true);
 
   const { note } = useNoteContext();
 
@@ -39,12 +40,15 @@ function HomePage() {
         <Toolbar
           onDownload={onDownload}
           onCopy={onCopy}
+          showResponse={showResponse}
+          onChangeShowResponse={(val: boolean) => setShowResponse(val)}
         />
 
         <Canvas
           ref={canvasCardRef}
           noteHTML={note.html}
           note={note}
+          showResponse={showResponse}
         />
       </MainSection>
 

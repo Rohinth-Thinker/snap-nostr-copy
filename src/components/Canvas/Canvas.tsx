@@ -35,12 +35,14 @@ import { proxyImg, toReadableStatsFormat } from "../../shared/utils";
 
 export type CanvasProps = {
   noteHTML: string,
-  note: NostrNote
+  note: NostrNote,
+  showResponse: boolean,
 };
 
 export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
   noteHTML,
   note,
+  showResponse,
 }, ref) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftResizeKnob = useRef<HTMLDivElement>(null);
@@ -107,20 +109,26 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
                   __html: noteHTML,
                 }} />
                 <TweetTimestamp>{dayjs(note.createdAt * 1000).format('hh:mm A')} · {dayjs(note.createdAt * 1000).format('DD MMM, YYYY')}</TweetTimestamp>
-                <TweetStats>
-                  <StatItem>
-                    <span>{toReadableStatsFormat(note.replies)}</span> replies
-                  </StatItem>
-                  <StatItem>
-                    <span>{toReadableStatsFormat(note.zaps)}</span> zaps
-                  </StatItem>
-                  <StatItem>
-                    <span>{toReadableStatsFormat(note.likes)}</span> likes
-                  </StatItem>
-                  <StatItem>
-                    <span>{toReadableStatsFormat(note.reposts)}</span> reposts
-                  </StatItem>
-                </TweetStats>
+                {
+                  !showResponse
+                  ? null
+                  : (
+                    <TweetStats>
+                      <StatItem>
+                        <span>{toReadableStatsFormat(note.replies)}</span> replies
+                      </StatItem>
+                      <StatItem>
+                        <span>{toReadableStatsFormat(note.zaps)}</span> zaps
+                      </StatItem>
+                      <StatItem>
+                        <span>{toReadableStatsFormat(note.likes)}</span> likes
+                      </StatItem>
+                      <StatItem>
+                        <span>{toReadableStatsFormat(note.reposts)}</span> reposts
+                      </StatItem>
+                    </TweetStats>
+                  )
+                }
               </CardContentContainer>
             </div>
           </CardContent>

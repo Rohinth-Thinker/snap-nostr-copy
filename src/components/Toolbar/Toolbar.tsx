@@ -5,11 +5,15 @@ import { ColorTool, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
 export type ToolbarProps = {
     onDownload: () => void,
     onCopy: () => void,
+    showResponse: boolean,
+    onChangeShowResponse: (showResponse: boolean) => void,
 };
 
 export function Toolbar({
     onDownload,
     onCopy,
+    showResponse,
+    onChangeShowResponse,
 }: ToolbarProps) {
     return (
         <ToolbarContainer>
@@ -18,8 +22,8 @@ export function Toolbar({
                 <ToolName>Color</ToolName>
             </Tool>
 
-            <Tool>
-                <HeartIcon />
+            <Tool onClick={() => onChangeShowResponse(!showResponse)}>
+                <HeartIcon isSelected={showResponse} />
                 <ToolName>Response</ToolName>
             </Tool>
 
