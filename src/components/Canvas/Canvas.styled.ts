@@ -113,25 +113,15 @@ export const CardContent = styled.div`
   height: 100%;
 `;
 
-export const BackgroundGradient = styled.div`
+export const BackgroundGradient = styled.div<{$gradient: string}>`
   ${AbsoluteFull}
-  background-image: linear-gradient(310deg, 
-    rgb(214, 233, 255), rgb(214, 229, 255), 
-    rgb(209, 214, 255), rgb(221, 209, 255), 
-    rgb(243, 209, 255), rgb(255, 204, 245), 
-    rgb(255, 204, 223), rgb(255, 200, 199), 
-    rgb(255, 216, 199), rgb(255, 221, 199));
+  background-image: ${props => props.$gradient};
   background-repeat: no-repeat;
 `;
 
-export const CardBlurShadow = styled.div<{width: number, height: number}>`
+export const CardBlurShadow = styled.div<{width: number, height: number, $gradient: string}>`
   ${AbsoluteFull}
-  background-image: linear-gradient(310deg, 
-    rgb(214, 233, 255), rgb(214, 229, 255), 
-    rgb(209, 214, 255), rgb(221, 209, 255), 
-    rgb(243, 209, 255), rgb(255, 204, 245), 
-    rgb(255, 204, 223), rgb(255, 200, 199), 
-    rgb(255, 216, 199), rgb(255, 221, 199));
+  background-image: ${props => props.$gradient};
   background-size: ${props => `${props.width}px ${props.height}px`};
   border-radius: 1em;
   z-index: 0;
@@ -267,7 +257,7 @@ export const TweetStats = styled.div`
 `;
 
 export const StatItem = styled.div`
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.7);
   margin-right: 1em;
 
   span {

@@ -1,4 +1,6 @@
+import { GRADIENT, GRADIENTS } from "../../shared/constants";
 import { Divider } from "../../shared/Global.styled";
+import { GradientPicker } from "../GradientPicker/GradientPicker";
 import { CopyIcon, DownloadIcon, HeartIcon } from "../Icon/Icon";
 import { ColorTool, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
 
@@ -7,6 +9,8 @@ export type ToolbarProps = {
     onCopy: () => void,
     showResponse: boolean,
     onChangeShowResponse: (showResponse: boolean) => void,
+    gradient: GRADIENT,
+    onGradientChange: (gradient: GRADIENT) => void,
 };
 
 export function Toolbar({
@@ -14,11 +18,17 @@ export function Toolbar({
     onCopy,
     showResponse,
     onChangeShowResponse,
+    gradient,
+    onGradientChange,
 }: ToolbarProps) {
     return (
         <ToolbarContainer>
             <Tool>
-                <ColorTool />
+                <GradientPicker
+                    gradient={gradient}
+                    onGradientChange={onGradientChange}
+                />
+                <ColorTool $gradient={GRADIENTS[gradient]} />
                 <ToolName>Color</ToolName>
             </Tool>
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { GradientPickerStyled } from "../GradientPicker/GradientPicker.styled";
 
 export const ToolbarContainer = styled.ul`
     width: 100px;
@@ -13,6 +14,8 @@ export const ToolbarContainer = styled.ul`
     flex-direction: column;
     align-items: center;
     gap: 10px;
+
+    position: relative;
 `;
 
 export const Tool = styled.button<{$withBackground?: boolean}>`
@@ -37,6 +40,12 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
     &:hover {
         background-color: #323131;
     }
+
+    &:hover ${GradientPickerStyled} {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(-100%);
+    }
 `;
 
 export const ToolName = styled.span`
@@ -44,9 +53,10 @@ export const ToolName = styled.span`
     font-size: 12px;
 `;
 
-export const ColorTool = styled.div`
+export const ColorTool = styled.div<{$gradient: string}>`
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: linear-gradient(120deg, #FFE58A, #DF9BFF);
+    background: ${props => props.$gradient};
+    box-shadow: rgba(255, 255, 255, 0.7) 0px 0px 0px 2px, rgba(0, 0, 0, 0.5) 0px 3px 6px;
 `;

@@ -37,12 +37,14 @@ export type CanvasProps = {
   noteHTML: string,
   note: NostrNote,
   showResponse: boolean,
+  gradient: string,
 };
 
 export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
   noteHTML,
   note,
   showResponse,
+  gradient,
 }, ref) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftResizeKnob = useRef<HTMLDivElement>(null);
@@ -81,13 +83,14 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
         </ResizeKnobs>
         <CardContainer ref={ref}>
           <CardContent>
-            <BackgroundGradient />
+            <BackgroundGradient $gradient={gradient} />
             <div
               style={{ maxWidth: "39rem", width: "100%", position: "relative" }}
             >
               <CardBlurShadow
                 width={width}
                 height={height}
+                $gradient={gradient}
               />
               <CardContentContainer>
                 <InnerGradient />

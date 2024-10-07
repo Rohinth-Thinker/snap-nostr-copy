@@ -7,10 +7,12 @@ import { Toolbar } from "../components/Toolbar/Toolbar";
 import { HomePageContainer, MainSection } from "./HomePage.styled";
 import { copyDataURL, downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
 import { useNoteContext } from "../contexts/note.context";
+import { GRADIENT, GRADIENTS } from "../shared/constants";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
   const [ showResponse, setShowResponse ] = useState(true);
+  const [ selectedGradient, setSelectedGradient ] = useState<GRADIENT>(GRADIENT.default);
 
   const { note } = useNoteContext();
 
@@ -42,6 +44,8 @@ function HomePage() {
           onCopy={onCopy}
           showResponse={showResponse}
           onChangeShowResponse={(val: boolean) => setShowResponse(val)}
+          gradient={selectedGradient}
+          onGradientChange={(gradient: GRADIENT) => setSelectedGradient(gradient)}
         />
 
         <Canvas
@@ -49,6 +53,7 @@ function HomePage() {
           noteHTML={note.html}
           note={note}
           showResponse={showResponse}
+          gradient={GRADIENTS[selectedGradient]}
         />
       </MainSection>
 

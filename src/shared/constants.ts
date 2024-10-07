@@ -33,3 +33,17 @@ export const initialNote: NostrNote = {
 
 
 export const MILLISATS_PER_SAT = 1000;
+
+export enum GRADIENT {
+  default = 'Default',
+  primal1 = 'Primal 1',
+  primal2 = 'Primal 2',
+  iris = 'Iris',
+};
+
+export const GRADIENTS = {
+  [GRADIENT.default]: 'linear-gradient(310deg, #d6e9ff, #d6e5ff, #d1d6ff, #ddd1ff, #f3d1ff, #ffccf5, #ffccdf, #ffc8c7, #ffd8c7, #ffddc7)',
+  [GRADIENT.primal1]: 'linear-gradient(120deg, #ffb880, #ff827d, #ff7f7f, #de78af, #c76cd5, #a366c5)',
+  [GRADIENT.primal2]: 'linear-gradient(159deg, #02e0ff 0%, #2798ee 17%, #2c7eec 33%, #3e63e2 50%, #483fc8 67%, #5129b6 100%, #643cbc 100%)',
+  [GRADIENT.iris]: 'linear-gradient(159deg, #c40ef7 0%, #cc0bf8 17%, #b918f9 33%, #9127ed 50%, #7a43ff 67%, #813eff 84%, #7c21e2 100%)',
+};
