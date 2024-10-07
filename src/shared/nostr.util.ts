@@ -1,8 +1,9 @@
-import NDK from "@nostr-dev-kit/ndk";
+import NDK, { NDKKind, NDKTag } from "@nostr-dev-kit/ndk";
 import { nip19, nip21 } from "nostr-tools";
 import { ProfilePointer } from "nostr-tools/nip19";
-import { defaultImgProxy } from "./constants";
+import { defaultImgProxy, MILLISATS_PER_SAT } from "./constants";
 import { proxyImg } from "./utils";
+import { decode } from "light-bolt11-decoder";
 
 export async function parseText(text: string) {
   const ndk = new NDK({
@@ -220,4 +221,89 @@ export function validateAndGetMatchedNostrEventBech32(text: string) {
   } catch(err) {
     return false;
   }
+}
+
+export async function getPostDetails(ndk: NDK, noteId: string) {
+  const post = await ndk.fetchEvent(noteId);
+  const author = await post?.author.fetchProfile();
+  const stats = await getPostStats(ndk, post?.id || '');
+
+  return {
+    post,
+    author,
+    stats,
+  }
+}
+
+export async function getPostStats(ndk: NDK, postId: string) {
+  const reposts = await ndk.fetchEvents({
+    kinds: [NDKKind.Repost],
+    '#e': [postId || '']
+  });
+
+  // Only take the count of direct reposts
+  const repostsCount = Array.from(reposts).filter(repost => {
+    const pTagCounts = repost.tags.filter((tag: NDKTag) => tag[0] === 'p').length;
+
+    return pTagCounts === 1;
+  }).length;
+
+  const likes = await ndk.fetchEvents({
+    kinds: [NDKKind.Reaction],
+    '#e': [postId || '']
+  });
+
+  const zaps = await ndk.fetchEvents({
+    kinds: [NDKKind.Zap],
+    '#e': [postId || '']
+  });
+
+  const zapAmount = Array.from(zaps).reduce((prev, curr) => {
+    const bolt11Tag = curr.getMatchingTags('bolt11');
+
+    if(
+      !bolt11Tag ||
+      !Array.isArray(bolt11Tag) ||
+      bolt11Tag.length === 0 ||
+      !bolt11Tag[0] ||
+      !Array.isArray(bolt11Tag[0]) ||
+      (bolt11Tag[0] as string[]).length === 0
+    ) {
+      return prev;
+    }
+
+    const bolt11 = bolt11Tag[0][1];
+
+    const decodedbol11 = decode(bolt11);
+
+    const amountSection = decodedbol11.sections.find(section => section.name === 'amount');
+
+    if(amountSection) {
+      const millisats = Number(amountSection.value);
+
+      return prev + millisats;
+    }
+
+    return prev;
+  }, 0);
+
+  const replies = await ndk.fetchEvents({
+    kinds: [NDKKind.Text],
+    '#e': [postId || '']
+  });
+
+  // Only take the direct replies
+  // https://github.com/nostr-protocol/nips/blob/master/10.md#positional-e-tags-deprecated
+  const replyCount = Array.from(replies).filter(reply => {
+    const eTagsCount = reply.tags.filter((tag: NDKTag) => tag[0] === 'e').length;
+
+    return eTagsCount === 1;
+  }).length;
+
+  return {
+    likes: likes.size,
+    reposts: repostsCount,
+    zaps: zapAmount / MILLISATS_PER_SAT,
+    replies: replyCount,
+  };
 }
