@@ -14,3 +14,22 @@ export const AbsoluteFull = css`
   right: 0;
   bottom: 0;
 `;
+
+export const Pointer = styled.span`
+  cursor: pointer;
+`;
+
+export const HelperText = styled.small`
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 17px;
+  color: #ffffff80;
+  transform: translateX(-10%);
+  font-weight: bold;
+`;
+
+export const ErrorText = styled(HelperText)`
+  color: #f87171;
+`;

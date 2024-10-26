@@ -1,8 +1,9 @@
 import { useRef } from "react";
 
 import { SearchIcon } from "../Icon/Icon";
-import { ErrorText, HelperText, SearchBarContainer, SearchBarForm, SearchBarProgress, SearchBarProgressContainer, SearchBarWrapper, SearchInput } from "./SearchBar.styled";
+import { SearchBarContainer, SearchBarForm, SearchBarProgress, SearchBarProgressContainer, SearchBarWrapper, SearchInput } from "./SearchBar.styled";
 import { useSearchInput } from "./hooks/use-search-input";
+import { ErrorText, HelperText } from "../../shared/Global.styled";
 
 export function SearchBar() {
     const {

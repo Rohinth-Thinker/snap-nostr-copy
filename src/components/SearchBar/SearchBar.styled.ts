@@ -56,21 +56,6 @@ export const SearchInput = styled.input`
     color: #FFF;
 `;
 
-export const HelperText = styled.small`
-    display: inline-block;
-    width: 100%;
-    margin-top: 10px;
-    text-align: center;
-    min-height: 17px;
-    color: #ffffff80;
-    transform: translateX(-10%);
-    font-weight: bold;
-`;
-
-export const ErrorText = styled(HelperText)`
-    color: #f87171;
-`;
-
 export const SearchBarProgressContainer = styled.div`
     position: absolute;
     inset: 3px 3px 1px;
