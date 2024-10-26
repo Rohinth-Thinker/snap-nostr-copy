@@ -1,5 +1,22 @@
 import styled, { css } from "styled-components";
 
+const size = {
+  mobile: "425px",
+  tablet: "900px",
+}
+
+export const mobile = (inner: string) => css`
+  @media (max-width: ${size.mobile}) {
+    ${inner};
+  }
+`;
+
+export const tablet= (inner: string) => css`
+  @media (max-width: ${size.tablet}) {
+    ${inner};
+  }
+`;
+
 export const Divider = styled.hr`
     display: block;
     width: 100%;
@@ -28,6 +45,10 @@ export const HelperText = styled.small`
   color: #ffffff80;
   transform: translateX(-10%);
   font-weight: bold;
+
+  ${tablet(`
+    transform: unset;
+  `)}
 `;
 
 export const ErrorText = styled(HelperText)`

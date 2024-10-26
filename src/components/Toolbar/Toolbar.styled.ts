@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { GradientPickerStyled } from "../GradientPicker/GradientPicker.styled";
+import { tablet } from "../../shared/Global.styled";
 
 export const ToolbarContainer = styled.ul`
     width: 100px;
@@ -16,6 +17,11 @@ export const ToolbarContainer = styled.ul`
     gap: 10px;
 
     position: relative;
+
+    ${tablet(`
+        flex-direction: row;
+        width: auto;
+    `)}
 `;
 
 export const Tool = styled.button<{$withBackground?: boolean}>`

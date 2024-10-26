@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { tablet } from '../shared/Global.styled';
 
 export const HomePageContainer = styled.main`
     min-height: 100vh;
@@ -16,4 +17,8 @@ export const MainSection = styled.article`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    ${tablet(`
+        flex-direction: column-reverse;
+    `)}
 `;

@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { tablet } from "../../shared/Global.styled";
 
 export const SearchBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
     top: 17px;
+
+    ${tablet(`
+        width: 100%;
+    `)}
 `;
 
 export const SearchBarContainer = styled.label`
@@ -38,6 +43,12 @@ export const SearchBarContainer = styled.label`
     }
 
     position: relative;
+
+    ${tablet(`
+        width: 100%;
+        transform: unset;
+        padding: 10px 10px;
+    `)}
 `;
 
 

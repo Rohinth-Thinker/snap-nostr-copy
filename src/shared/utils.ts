@@ -100,3 +100,15 @@ export function getRelaysFromLocalStorage(): string[] | null {
 export function setRelaysInLocalStorage(relays: string[]) {
   localStorage.setItem(RELAYS_LOCALSTORAGE_KEY, JSON.stringify(relays));
 }
+
+export function getBreakpoint() {
+  const width = window.innerWidth;
+  
+  if (width <= 425) {
+    return 'small';
+  } else if (width > 425 && width <= 900) {
+    return 'medium';
+  } else {
+    return 'large';
+  }
+}

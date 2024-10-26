@@ -35,47 +35,57 @@ const useResizable = ({
   const newWidthRef = useRef(width);
   const newHeightRef = useRef(height);
 
-  const handleMouseDown = (e: MouseEvent, knobPosition: ResizeKnobPosition) => {
+  const handlePointerDown = (
+    event: MouseEvent | TouchEvent,
+    knobPosition: ResizeKnobPosition
+  ) => {
     isResizingRef.current = true;
     knobRef.current = knobPosition;
 
+    // Determine initial touch/mouse positions
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
+
     if (knobPosition === ResizeKnobPosition.left || knobPosition === ResizeKnobPosition.right) {
-      startXRef.current = e.clientX;
+      startXRef.current = clientX;
       startWidthRef.current = cardWrapperRef.current?.offsetWidth || 0;
     }
 
     if (knobPosition === ResizeKnobPosition.bottom) {
-      startYRef.current = e.clientY;
+      startYRef.current = clientY;
       startHeightRef.current = cardWrapperRef.current?.offsetHeight || 0;
     }
 
     document.body.style.userSelect = 'none';
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handlePointerMove = (event: MouseEvent | TouchEvent) => {
     if (!isResizingRef.current) return;
 
+    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
+    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
+
     if (knobRef.current === ResizeKnobPosition.left) {
-      const width = startWidthRef.current - (e.clientX - startXRef.current);
+      const width = startWidthRef.current - (clientX - startXRef.current);
       newWidthRef.current = Math.max(width, 400);
     } else if (knobRef.current === ResizeKnobPosition.right) {
-      const width = startWidthRef.current + (e.clientX - startXRef.current);
+      const width = startWidthRef.current + (clientX - startXRef.current);
       newWidthRef.current = Math.max(width, 400);
     } else if (knobRef.current === ResizeKnobPosition.bottom) {
-      const height = startHeightRef.current + (e.clientY - startYRef.current);
+      const height = startHeightRef.current + (clientY - startYRef.current);
       newHeightRef.current = Math.max(height, 380);
     }
 
     if (cardWrapperRef.current) {
-      if(knobRef.current === ResizeKnobPosition.left || knobRef.current === ResizeKnobPosition.right) {
+      if (knobRef.current === ResizeKnobPosition.left || knobRef.current === ResizeKnobPosition.right) {
         cardWrapperRef.current.style.width = Math.max(newWidthRef.current, 50) + 'px';
-      } else if(knobRef.current === ResizeKnobPosition.bottom) {
+      } else if (knobRef.current === ResizeKnobPosition.bottom) {
         cardWrapperRef.current.style.height = Math.max(newHeightRef.current, 50) + 'px';
       }
     }
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     isResizingRef.current = false;
     document.body.style.userSelect = '';
     setWidth(newWidthRef.current);
@@ -88,12 +98,14 @@ const useResizable = ({
       position: ResizeKnobPosition
     ) => {
       if (knobRef && knobRef.current) {
-        const mouseDownHandler = (e: MouseEvent) => handleMouseDown(e, position);
-        knobRef.current.addEventListener('mousedown', mouseDownHandler);
+        const pointerDownHandler = (e: MouseEvent | TouchEvent) => handlePointerDown(e, position);
+        knobRef.current.addEventListener('mousedown', pointerDownHandler);
+        knobRef.current.addEventListener('touchstart', pointerDownHandler, { passive: false });
 
         return () => {
           if (knobRef.current) {
-            knobRef.current.removeEventListener('mousedown', mouseDownHandler);
+            knobRef.current.removeEventListener('mousedown', pointerDownHandler);
+            knobRef.current.removeEventListener('touchstart', pointerDownHandler);
           }
         };
       }
@@ -103,15 +115,19 @@ const useResizable = ({
     const cleanupRight = attachListener(rightResizeKnob, ResizeKnobPosition.right);
     const cleanupBottom = attachListener(bottomResizeKnob, ResizeKnobPosition.bottom);
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mousemove', handlePointerMove);
+    document.addEventListener('mouseup', handlePointerUp);
+    document.addEventListener('touchmove', handlePointerMove, { passive: false });
+    document.addEventListener('touchend', handlePointerUp);
 
     return () => {
       cleanupLeft && cleanupLeft();
       cleanupRight && cleanupRight();
       cleanupBottom && cleanupBottom();
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mousemove', handlePointerMove);
+      document.removeEventListener('mouseup', handlePointerUp);
+      document.removeEventListener('touchmove', handlePointerMove);
+      document.removeEventListener('touchend', handlePointerUp);
     };
   }, [leftResizeKnob, rightResizeKnob, bottomResizeKnob, cardWrapperRef]);
 

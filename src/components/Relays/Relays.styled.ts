@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { tablet } from "../../shared/Global.styled";
 
 export const RelaysContainer = styled.aside`
     position: absolute;
@@ -29,6 +30,16 @@ export const RelaysContainer = styled.aside`
     transition-property: transform, opacity;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
+
+    ${tablet(`
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10000;
+    `)}
 `;
 
 export const RelaysCardHeader = styled.div`

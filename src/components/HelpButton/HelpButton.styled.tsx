@@ -7,6 +7,7 @@ export const StyledHelpButton = styled.button`
     font-size: 36px;
     color: #FFF;
     width: 65px;
+    height: 65px;
     border-radius: 5px;
 
     &:hover {

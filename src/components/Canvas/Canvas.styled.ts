@@ -1,14 +1,18 @@
 import styled from "styled-components";
-import { AbsoluteFull } from "../../shared/Global.styled";
+import { AbsoluteFull, tablet } from "../../shared/Global.styled";
 
 export const CanvasContainer = styled.div`
-    flex: 1;
-    height: 100%;
+  flex: 1;
+  height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+
+  ${tablet(`
+    transform: scale(0.5);
+  `)}
 `;
 
 export const CardWrapper = styled.div`

@@ -3,11 +3,14 @@ import { Close, Delete, Plus } from "../Icon/Icon";
 import { AddButton, CloseButton, Input, InputContainer, RelayItem, RelayList, RelaysCardHeader, RelaysContainer, SaveButton } from "./Relays.styled";
 import { ErrorText, Pointer } from "../../shared/Global.styled";
 import { useRelaysContext } from "../../contexts/relays.context";
+import { getBreakpoint } from "../../shared/utils";
 
 export type RelaysModalProps = {
     isOpen: boolean;
     onClose: () => void;
 };
+
+const breakpoint = getBreakpoint();
 
 export function RelaysModal({
     isOpen,
@@ -45,12 +48,22 @@ export function RelaysModal({
         onClose();
     }
 
-    return (
-        <RelaysContainer className="relays-modal" style={{
+    let styles = {};
+
+    if(breakpoint === 'small' || breakpoint === 'medium') {
+        styles = {
+            display: isOpen ? 'flex': 'none',
+        }
+    } else {
+        styles = {
             transform: isOpen ? 'translateX(100%)': 'translateX(95%)',
             opacity: isOpen ? 1: 0,
             pointerEvents: isOpen ? 'all' : 'none',
-        }}>
+        };
+    }
+
+    return (
+        <RelaysContainer className="relays-modal" style={styles}>
             <RelaysCardHeader>
                 <label htmlFor="relay-address">Relay address</label>
                 <CloseButton onClick={() => onClose()}>

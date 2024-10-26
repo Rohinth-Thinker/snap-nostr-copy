@@ -1,15 +1,24 @@
 import styled from "styled-components";
+import { tablet } from "../../shared/Global.styled";
 
 export const FooterWrapper = styled.footer`
     display: flex;
     justify-content: space-between;
     padding: 20px 60px;
+
+    ${tablet(`
+      padding: 20px;
+    `)}
 `;
 
 export const FooterContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${tablet(`
+      flex-direction: column;
+    `)}
 `;
 
 export const FooterText = styled.span`
