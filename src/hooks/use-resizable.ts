@@ -55,13 +55,15 @@ const useResizable = ({
   const handleMouseMove = (e: MouseEvent) => {
     if (!isResizingRef.current) return;
 
-    // TODO: Add limit to width and height
     if (knobRef.current === ResizeKnobPosition.left) {
-      newWidthRef.current = startWidthRef.current - (e.clientX - startXRef.current);
+      const width = startWidthRef.current - (e.clientX - startXRef.current);
+      newWidthRef.current = Math.max(width, 400);
     } else if (knobRef.current === ResizeKnobPosition.right) {
-      newWidthRef.current = startWidthRef.current + (e.clientX - startXRef.current);
+      const width = startWidthRef.current + (e.clientX - startXRef.current);
+      newWidthRef.current = Math.max(width, 400);
     } else if (knobRef.current === ResizeKnobPosition.bottom) {
-      newHeightRef.current = startHeightRef.current + (e.clientY - startYRef.current);
+      const height = startHeightRef.current + (e.clientY - startYRef.current);
+      newHeightRef.current = Math.max(height, 380);
     }
 
     if (cardWrapperRef.current) {
