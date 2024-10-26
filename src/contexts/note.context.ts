@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { initialNote, NostrNote } from "../shared/constants";
 
-const setNote = (note: NostrNote) => {}
+const setNote = (_note: NostrNote) => {}
 
 export const NoteContext = createContext({
     note: initialNote,
