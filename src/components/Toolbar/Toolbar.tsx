@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { GRADIENT, GRADIENTS } from "../../shared/constants";
 import { Divider } from "../../shared/Global.styled";
 import { GradientPicker } from "../GradientPicker/GradientPicker";
-import { CopyIcon, DownloadIcon, HeartIcon } from "../Icon/Icon";
-import { ColorTool, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
+import { CopyIcon, DownloadIcon, HeartIcon, Relays } from "../Icon/Icon";
+import { ColorTool, RelaysToolContainer, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
+import { RelaysModal } from "../Relays/Relays";
 
 export type ToolbarProps = {
     onDownload: () => void,
@@ -21,6 +23,9 @@ export function Toolbar({
     gradient,
     onGradientChange,
 }: ToolbarProps) {
+
+    const [ isRelayModalOpen, setIsRelayModalOpen ] = useState(false);
+
     return (
         <ToolbarContainer>
             <Tool>
@@ -36,6 +41,20 @@ export function Toolbar({
                 <HeartIcon isSelected={showResponse} />
                 <ToolName>Response</ToolName>
             </Tool>
+
+            <RelaysToolContainer>
+                <Tool onClick={() => setIsRelayModalOpen(prev => !prev)}>
+                    <Relays />
+                    <ToolName>Relays</ToolName>
+                </Tool>
+
+                <RelaysModal
+                    isOpen={isRelayModalOpen}
+                    onClose={() => {
+                        setIsRelayModalOpen(false);
+                    }}
+                />
+            </RelaysToolContainer>
 
             {/* TODO: Add a button to configure relays */}
 

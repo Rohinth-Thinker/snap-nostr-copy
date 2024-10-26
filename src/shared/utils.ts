@@ -2,6 +2,7 @@ import * as htmlToImage from "html-to-image";
 import numeral from 'numeral';
 
 import { hmacSha256, hexToBytes, base64Encode } from "./crypto.utils";
+import { RELAYS_LOCALSTORAGE_KEY } from "./constants";
 
 export async function getDataURLFromHTMLDOM(
   domElement: HTMLElement
@@ -84,4 +85,18 @@ export function proxyImg(url: string, settings: ImgProxySettings, resize?: numbe
 
 export function toReadableStatsFormat(number: number ) {
   return numeral(number).format('0.0a').replace('.0', '');
+}
+
+export function getRelaysFromLocalStorage(): string[] | null {
+  const existingRelays = localStorage.getItem(RELAYS_LOCALSTORAGE_KEY);
+
+  if(existingRelays !== null) {
+    return(JSON.parse(existingRelays));
+  }
+
+  return null;
+}
+
+export function setRelaysInLocalStorage(relays: string[]) {
+  localStorage.setItem(RELAYS_LOCALSTORAGE_KEY, JSON.stringify(relays));
 }

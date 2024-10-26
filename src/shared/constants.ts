@@ -47,3 +47,15 @@ export const GRADIENTS = {
   [GRADIENT.primal2]: 'linear-gradient(159deg, #02e0ff 0%, #2798ee 17%, #2c7eec 33%, #3e63e2 50%, #483fc8 67%, #5129b6 100%, #643cbc 100%)',
   [GRADIENT.iris]: 'linear-gradient(159deg, #c40ef7 0%, #cc0bf8 17%, #b918f9 33%, #9127ed 50%, #7a43ff 67%, #813eff 84%, #7c21e2 100%)',
 };
+
+export const DEFAULT_RELAYS = [
+  "wss://relay.damus.io",
+  "wss://nostr.wine",
+  // "wss://relay.nostr.net",
+  "wss://nos.lol",
+  // "wss://nostr-pub.wellorder.net",
+  // "wss://njump.me",
+  "wss://relay.primal.net",
+];
+
+export const RELAYS_LOCALSTORAGE_KEY = 'relays';

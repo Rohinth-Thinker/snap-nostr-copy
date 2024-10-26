@@ -4,6 +4,7 @@ import NDK from "@nostr-dev-kit/ndk";
 
 import { parseText, getHTML, getPostDetails } from "../shared/nostr.util";
 import { useNoteContext } from "../contexts/note.context";
+import { useRelaysContext } from "../contexts/relays.context";
 
 
 export function useNostrEvent(bech32: string) {
@@ -11,23 +12,18 @@ export function useNostrEvent(bech32: string) {
     const [ isError, setIsError ] = useState(false);
 
     const { setNote } = useNoteContext();
+    const { relays } = useRelaysContext();
 
     useEffect(() => {
         async function fetchNote(noteId: string) {
             setIsLoading(true);
 
             try {
+                console.log({relays});
 
+                // TODO: Come up with a solution to prevent app from stalling if any of the relays are down
                 const ndk = new NDK({
-                    explicitRelayUrls: [
-                        "wss://relay.damus.io",
-                        "wss://nostr.wine",
-                        "wss://relay.nostr.net",
-                        "wss://nos.lol",
-                        // "wss://nostr-pub.wellorder.net",
-                        // "wss://njump.me",
-                        "wss://relay.primal.net",
-                    ],
+                    explicitRelayUrls: relays,
                 });
 
                 await ndk.connect();

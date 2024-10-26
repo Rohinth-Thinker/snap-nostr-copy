@@ -65,3 +65,8 @@ export const ColorTool = styled.div<{$gradient: string}>`
     background: ${props => props.$gradient};
     box-shadow: rgba(255, 255, 255, 0.7) 0px 0px 0px 2px, rgba(0, 0, 0, 0.5) 0px 3px 6px;
 `;
+
+export const RelaysToolContainer = styled.div`
+    position: relative;
+    width: 100%;
+`;
