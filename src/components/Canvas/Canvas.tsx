@@ -85,7 +85,7 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
           <CardContent>
             <BackgroundGradient $gradient={gradient} />
             <div
-              style={{ maxWidth: "39rem", width: "100%", position: "relative" }}
+              style={{width: "100%", position: "relative" }}
             >
               <CardBlurShadow
                 width={width}

@@ -168,6 +168,7 @@ export const CardContentContainer = styled.div`
   border-radius: 1em;
   border: 1px solid;
   backdrop-filter: blur(18px) saturate(177%);
+  -webkit-backdrop-filter: blur(18px) saturate(177%);
   transition: all 0.15s cubic-bezier(.4,0,.2,1);
 `;
 
