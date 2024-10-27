@@ -57,7 +57,7 @@ function HomePage() {
         />
       </MainSection>
 
-      <Footer />
+      {/* <Footer /> */}
     </HomePageContainer>
   );
 }

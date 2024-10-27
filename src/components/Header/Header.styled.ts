@@ -12,7 +12,7 @@ export const HomePageHeader = styled.header`
     ${tablet(`
         flex-direction: column-reverse;
         height: auto;
-        padding: 20px 40px 0 40px;
+        padding: 20px;
     `)}
 `;
 
@@ -21,4 +21,9 @@ export const HeaderActions = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
+
+    ${tablet(`
+        width: 100%;
+        justify-content: space-between;
+    `)}
 `;

@@ -20,7 +20,16 @@ export const ToolbarContainer = styled.ul`
 
     ${tablet(`
         flex-direction: row;
-        width: auto;
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+        justify-content: space-between;
+
+        & hr {
+            width: 1px;
+            height: 40px;
+            margin: 0;
+        }
     `)}
 `;
 
@@ -33,7 +42,7 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
     width: 90%;
     padding: 10px;
     border-radius: 5px;
-    transition: background-color 0.1;
+    transition: background-color 0.1s;
     border: none;
     position: relative;
 
@@ -57,6 +66,17 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
     &:active svg, &:active > div {
         transform: scale(0.8);
     }
+
+    & svg {
+        ${tablet(`
+            width: 20px !important;
+            height: 20px !important;
+        `)}
+    }
+
+    ${tablet(`
+        width: auto;
+    `)}
 `;
 
 export const ToolName = styled.span`
@@ -70,9 +90,18 @@ export const ColorTool = styled.div<{$gradient: string}>`
     border-radius: 50%;
     background: ${props => props.$gradient};
     box-shadow: rgba(255, 255, 255, 0.7) 0px 0px 0px 2px, rgba(0, 0, 0, 0.5) 0px 3px 6px;
+
+    ${tablet(`
+        width: 20px;
+        height: 20px;
+    `)}
 `;
 
 export const RelaysToolContainer = styled.div`
     position: relative;
     width: 100%;
+
+    ${tablet(`
+        width: auto;
+    `)}
 `;

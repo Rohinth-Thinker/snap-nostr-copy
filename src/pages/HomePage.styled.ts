@@ -20,5 +20,6 @@ export const MainSection = styled.article`
 
     ${tablet(`
         flex-direction: column-reverse;
+        padding: 20px;
     `)}
 `;
