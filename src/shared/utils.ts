@@ -7,6 +7,12 @@ import { RELAYS_LOCALSTORAGE_KEY } from "./constants";
 export async function getDataURLFromHTMLDOM(
   domElement: HTMLElement
 ): Promise<string> {
+  // ? Sometimes images are not properly rendered in Safari - https://github.com/bubkoo/html-to-image/issues/361
+  await htmlToImage.toPng(domElement);
+  await htmlToImage.toPng(domElement);
+  await htmlToImage.toPng(domElement);
+  await htmlToImage.toPng(domElement);
+  await htmlToImage.toPng(domElement);
   return htmlToImage.toPng(domElement);
 }
 

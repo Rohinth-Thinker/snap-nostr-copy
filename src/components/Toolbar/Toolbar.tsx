@@ -13,6 +13,7 @@ export type ToolbarProps = {
     onChangeShowResponse: (showResponse: boolean) => void,
     gradient: GRADIENT,
     onGradientChange: (gradient: GRADIENT) => void,
+    isDownloading: boolean,
 };
 
 export function Toolbar({
@@ -22,6 +23,7 @@ export function Toolbar({
     onChangeShowResponse,
     gradient,
     onGradientChange,
+    isDownloading,
 }: ToolbarProps) {
 
     const [ isRelayModalOpen, setIsRelayModalOpen ] = useState(false);
@@ -66,7 +68,11 @@ export function Toolbar({
             </Tool>
 
             <Tool $withBackground onClick={onDownload}>
-                <DownloadIcon />
+                {
+                    isDownloading
+                    ? <div className="loader"></div>
+                    : <DownloadIcon />
+                }
                 <ToolName>Download</ToolName>
             </Tool>
         </ToolbarContainer>

@@ -13,16 +13,18 @@ function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
   const [ showResponse, setShowResponse ] = useState(true);
   const [ selectedGradient, setSelectedGradient ] = useState<GRADIENT>(GRADIENT.default);
+  const [ isDownloading, setIsDownloading ] = useState(false);
 
   const { note } = useNoteContext();
 
   function onDownload() {
+    setIsDownloading(true);
     const cardEl = canvasCardRef.current;
 
     if (cardEl) {
       getDataURLFromHTMLDOM(cardEl).then((dataURL) =>
         downloadImage("nostr-note", dataURL)
-      );
+      ).finally(() => setIsDownloading(false));
     }
   }
 
@@ -46,6 +48,7 @@ function HomePage() {
           onChangeShowResponse={(val: boolean) => setShowResponse(val)}
           gradient={selectedGradient}
           onGradientChange={(gradient: GRADIENT) => setSelectedGradient(gradient)}
+          isDownloading={isDownloading}
         />
 
         <Canvas
