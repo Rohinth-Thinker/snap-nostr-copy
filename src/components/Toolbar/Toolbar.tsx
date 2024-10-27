@@ -39,7 +39,7 @@ export function Toolbar({
 
             <Tool onClick={() => onChangeShowResponse(!showResponse)}>
                 <HeartIcon isSelected={showResponse} />
-                <ToolName>Response</ToolName>
+                <ToolName>Stats</ToolName>
             </Tool>
 
             <RelaysToolContainer>

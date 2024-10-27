@@ -10,6 +10,10 @@ export const StyledHelpButton = styled.button`
     height: 65px;
     border-radius: 5px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     &:hover {
         background-color: rgba(39,39,40,1);
     }

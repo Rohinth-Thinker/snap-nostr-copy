@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 import { Canvas } from "../components/Canvas/Canvas";
-import { Footer } from "../components/Footer/Footer";
+// import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
 import { Toolbar } from "../components/Toolbar/Toolbar";
 import { HomePageContainer, MainSection } from "./HomePage.styled";
@@ -57,7 +57,7 @@ function HomePage() {
         />
       </MainSection>
 
-      <Footer />
+      {/* <Footer /> */}
     </HomePageContainer>
   );
 }
