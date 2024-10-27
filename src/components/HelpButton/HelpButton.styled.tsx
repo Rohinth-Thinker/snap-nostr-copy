@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { tablet } from "../../shared/Global.styled";
 
 export const StyledHelpButton = styled.button`
     border: none;
@@ -21,4 +22,10 @@ export const StyledHelpButton = styled.button`
     &:focus {
         outline: #CE66FF solid 2px;
     }
+
+    ${tablet(`
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
+    `)}
 `;

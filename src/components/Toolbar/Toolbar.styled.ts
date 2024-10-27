@@ -24,6 +24,7 @@ export const ToolbarContainer = styled.ul`
         padding: 10px;
         margin: 0;
         justify-content: space-between;
+        gap: 0px;
 
         & hr {
             width: 1px;
