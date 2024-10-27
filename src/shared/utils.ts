@@ -112,3 +112,7 @@ export function getBreakpoint() {
     return 'large';
   }
 }
+
+export function isSafari() {
+  return (window as any).safari !== undefined;
+}

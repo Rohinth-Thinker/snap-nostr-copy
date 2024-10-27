@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { AbsoluteFull, tablet } from "../../shared/Global.styled";
+import { isSafari } from "../../shared/utils";
 
 export const CanvasContainer = styled.div`
   flex: 1;
@@ -9,9 +10,11 @@ export const CanvasContainer = styled.div`
   justify-content: center;
   align-items: center;
   user-select: none;
+  -webkit-user-select: none;
 
   ${tablet(`
     transform: scale(0.5);
+    -webkit-transform: scale(0.5);
   `)}
 `;
 
@@ -34,6 +37,7 @@ export enum ResizeKnobPosition { left, bottom, right };
 
 export const ResizeKnobContainer = styled.div<{$position: ResizeKnobPosition}>`
     touch-action: none;
+    -webkit-touch-callout: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,6 +50,7 @@ export const ResizeKnobContainer = styled.div<{$position: ResizeKnobPosition}>`
             top: 50%;
             left: 0;
             transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
             cursor: ew-resize;
         `
         : ''
@@ -57,6 +62,7 @@ export const ResizeKnobContainer = styled.div<{$position: ResizeKnobPosition}>`
             top: 50%;
             right: 0;
             transform: translateX(50%) translateY(-50%);
+            -webkit-transform: translateX(50%) translateY(-50%);
             cursor: ew-resize;
         `
         : ''
@@ -68,6 +74,7 @@ export const ResizeKnobContainer = styled.div<{$position: ResizeKnobPosition}>`
             bottom: 0;
             left: 50%;
             transform: translateX(-50%) translateY(50%);
+            -webkit-transform: translateX(-50%) translateY(50%);
             cursor: ns-resize;
         `
         : ''
@@ -77,14 +84,18 @@ export const ResizeKnobContainer = styled.div<{$position: ResizeKnobPosition}>`
     pointer-events: auto;
 
     &:hover div {
-        transform: scale(2.5);
+      transform: scale(2.5);
+      -webkit-transform: scale(2.5);
     }
 `;
 
 export const ResizeKnob = styled.div`
-    transition-property: transform;
+    transition-property: -webkit-transform, transform;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
     transition-duration: .15s;
+    -webkit-transition-property: -webkit-transform, transform;
+    -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
+    -webkit-transition-duration: .15s;
     box-shadow: 0 0 #0000,0 0 #0000,0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
     background-color: #FFF;
     border-radius: 50%;
@@ -111,6 +122,11 @@ export const CardContent = styled.div`
               color 0.15s cubic-bezier(.4,0,.2,1), 
               fill 0.15s cubic-bezier(.4,0,.2,1), 
               stroke 0.15s cubic-bezier(.4,0,.2,1);
+  -webkit-transition: background-color 0.15s cubic-bezier(.4,0,.2,1), 
+              border-color 0.15s cubic-bezier(.4,0,.2,1), 
+              color 0.15s cubic-bezier(.4,0,.2,1), 
+              fill 0.15s cubic-bezier(.4,0,.2,1), 
+              stroke 0.15s cubic-bezier(.4,0,.2,1);
   display: grid;
   place-items: center;
   width: 100%;
@@ -130,37 +146,48 @@ export const CardBlurShadow = styled.div<{width: number, height: number, $gradie
   border-radius: 1em;
   z-index: 0;
 
-  &:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 3em;
-    width: 100%;
-    height: 100%;
-    border-radius: 1em;
-    background-color: #0000002e;
-    transform: translateZ(-1px);
-    filter: blur(60px);
-    z-index: -1;
-  }
+  ${
+    !isSafari()
+    ? `
+      &:before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 3em;
+        width: 100%;
+        height: 100%;
+        border-radius: 1em;
+        background-color: #0000002e;
+        transform: translateZ(-1px);
+        -webkit-transform: translateZ(-1px);
+        filter: blur(60px);
+        -webkit-filter: blur(10px);
+        z-index: -1;
+      }
 
-  &:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 3em;
-    width: 100%;
-    height: 100%;
-    border-radius: 1em;
-    background-color: #0000002e;
-    transform: translateZ(-1px);
-    filter: blur(60px);
-    z-index: -1;
-    filter: blur(20px);
-    left: 3%;
-    right: 3%;
-    width: initial;
-    top: 1em;
+      &:after {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 3em;
+        width: 100%;
+        height: 100%;
+        border-radius: 1em;
+        background-color: #0000002e;
+        transform: translateZ(-1px);
+        -webkit-transform: translateZ(-1px);
+        filter: blur(60px);
+        -webkit-filter: blur(10px);: blur(60px);
+        z-index: -1;
+        filter: blur(20px);
+        -webkit-filter: blur(10px);: blur(20px);
+        left: 3%;
+        right: 3%;
+        width: initial;
+        top: 1em;
+      }
+    `
+    : ``
   }
 `;
 
@@ -174,6 +201,7 @@ export const CardContentContainer = styled.div`
   backdrop-filter: blur(18px) saturate(177%);
   -webkit-backdrop-filter: blur(18px) saturate(177%);
   transition: all 0.15s cubic-bezier(.4,0,.2,1);
+  -webkit-transition: all 0.15s cubic-bezier(.4,0,.2,1);
 `;
 
 export const InnerGradient = styled.div`

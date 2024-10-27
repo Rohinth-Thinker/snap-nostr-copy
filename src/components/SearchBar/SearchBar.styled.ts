@@ -21,12 +21,14 @@ export const SearchBarContainer = styled.label`
     height: 50px;
     box-shadow: 0 25px 40px 11px #00000040;
     transform: translateX(-10%);
+    -webkit-transform: translateX(-10%);
 
     display: flex;
     align-items: center;
     gap: 10px;
 
     transition: all 0.2s;
+    -webkit-transition: all 0.2s;
 
     cursor: text;
 
@@ -47,6 +49,7 @@ export const SearchBarContainer = styled.label`
     ${tablet(`
         width: 100%;
         transform: unset;
+        -webkit-transform: unset;
         padding: 10px 10px;
     `)}
 `;
@@ -83,7 +86,9 @@ export const SearchBarProgress = styled.div`
     -webkit-animation: 3s linear infinite rainbow,.5s ease-out enter;
     animation: 3s linear infinite rainbow,.5s ease-out enter;
     transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
     transform-origin: left;
+    -webkit-transform-origin: left;
     background-size: 500%;
     z-index: 999999;
     position: absolute;

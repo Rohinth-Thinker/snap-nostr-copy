@@ -8,4 +8,5 @@ export const StyledLogo = styled.h1`
     background-clip: text;
     -webkit-text-fill-color: transparent;
     user-select: none;
+    -webkit-user-select: none;
 `;

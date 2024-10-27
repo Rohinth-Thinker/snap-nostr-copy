@@ -44,6 +44,7 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
     padding: 10px;
     border-radius: 5px;
     transition: background-color 0.1s;
+    -webkit-transition: background-color 0.1s;
     border: none;
     position: relative;
 
@@ -62,10 +63,12 @@ export const Tool = styled.button<{$withBackground?: boolean}>`
         opacity: 1;
         pointer-events: auto;
         transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
     }
 
     &:active svg, &:active > div {
         transform: scale(0.8);
+        -webkit-transform: scale(0.8);
     }
 
     & svg {

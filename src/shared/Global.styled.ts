@@ -44,10 +44,12 @@ export const HelperText = styled.small`
   min-height: 17px;
   color: #ffffff80;
   transform: translateX(-10%);
+  -webkit-transform: translateX(-10%);
   font-weight: bold;
 
   ${tablet(`
     transform: unset;
+    -webkit-transform: unset;
   `)}
 `;
 

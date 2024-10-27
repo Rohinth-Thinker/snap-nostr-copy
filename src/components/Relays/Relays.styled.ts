@@ -26,10 +26,13 @@ export const RelaysContainer = styled.aside`
     flex-direction: column;
     gap: 36px;
 
-    will-change: transform, opacity;
-    transition-property: transform, opacity;
+    will-change:-webkit-transform,  transform, opacity;
+    transition-property: -webkit-transform, transform, opacity;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
+    -webkit-transition-property: -webkit-transform, transform, opacity;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
 
     ${tablet(`
         display: none;
@@ -58,6 +61,7 @@ export const CloseButton = styled.button`
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
+    -webkit-transition: all 0.2s;
     background-color: transparent;
 
     &:hover {
@@ -94,6 +98,7 @@ export const AddButton = styled.button`
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
+    -webkit-transition: all 0.2s;
 
     &:hover {
         background-color: transparent;

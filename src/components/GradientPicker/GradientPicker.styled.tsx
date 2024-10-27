@@ -13,12 +13,16 @@ export const GradientPickerStyled = styled.div`
     border-radius: 6px;
 
     transform: rotateX(25deg) translateY(-100%);
-    will-change: transform, opacity;
-    transition-property: transform, opacity;
+    -webkit-transform: rotateX(25deg) translateY(-100%);
+    will-change: -webkit-transform, transform, opacity;
+    transition-property: -webkit-transform, transform, opacity;
     transition-duration: 150ms;
+    -webkit-transition-property: -webkit-transform, transform, opacity;
+    -webkit-transition-duration: 150ms;
     opacity: 0;
     pointer-events: none;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
+    -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
 
     display: flex;
     gap: 15px;
@@ -43,6 +47,7 @@ export const Gradient = styled.div<{$background: string, $isSelected: boolean}>`
     border-radius: 6px;
     background: ${(props) => props.$background};
     transition: box-shadow 0.1s;
+    -webkit-transition: box-shadow 0.1s;
     position: relative;
 
      &::before {
@@ -54,6 +59,7 @@ export const Gradient = styled.div<{$background: string, $isSelected: boolean}>`
         bottom: -5px;
         border: 2px solid transparent;
         transition: transform 0.4s ease, border-color 0.4s ease;
+        -webkit-transition: transform 0.4s ease, border-color 0.4s ease;
         border-radius: 10px;
     }
 
@@ -64,6 +70,7 @@ export const Gradient = styled.div<{$background: string, $isSelected: boolean}>`
             &::before {
                 border-color: #CE66FF; 
                 transform: scale(1); 
+                -webkit-transform: scale(1); 
             }
         `
         : ''
@@ -75,6 +82,7 @@ export const Gradient = styled.div<{$background: string, $isSelected: boolean}>`
 
     &:active {
         transform: scale(0.9);
+        -webkit-transform: scale(0.9);
     }
 `;
 
