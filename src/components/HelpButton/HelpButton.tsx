@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Bitcoin, HeartIcon2, Mail, QuestionMark } from "../Icon/Icon";
+import { Bitcoin, Github, HeartIcon2, Mail, QuestionMark } from "../Icon/Icon";
 import { HelpAnchor, HelpButtonContainer, HelpContainer, HelpItem, StyledHelpButton } from "./HelpButton.styled";
 
 const HELP_ITEMS = [
@@ -11,7 +11,7 @@ const HELP_ITEMS = [
     {
         text: "What's Nostr?",
         icon: <QuestionMark />,
-        link: '/snap-nostr/about-nostr',
+        link: 'https://nostr.com',
     },
     {
         text: "Not working?",
@@ -32,6 +32,11 @@ const HELP_ITEMS = [
         text: "Donate",
         icon: <Bitcoin />,
         link: '/snap-nostr/donate',
+    },
+    {
+        text: "Github",
+        icon: <Github />,
+        link: 'https://github.com/djhemath/snap-nostr',
     },
 ];
 
@@ -82,6 +87,7 @@ export function HelpButton() {
                         <HelpItem onClick={() => onHelpItemClick()}>
                             <HelpAnchor
                                 href={item.link}
+                                target="_blank"
                             >
                                 {item.icon}
                                 <span>{item.text}</span>
