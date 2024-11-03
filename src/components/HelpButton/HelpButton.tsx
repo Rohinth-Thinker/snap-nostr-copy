@@ -6,7 +6,7 @@ const HELP_ITEMS = [
     {
         text: "What's this?",
         icon: <QuestionMark />,
-        link: '/snap-nostr/about',
+        link: '/about',
     },
     {
         text: "What's Nostr?",
@@ -16,22 +16,22 @@ const HELP_ITEMS = [
     {
         text: "Not working?",
         icon: <QuestionMark />,
-        link: '/snap-nostr/not-working',
+        link: '/not-working',
     },
     {
         text: "Credits",
         icon: <HeartIcon2 />,
-        link: '/snap-nostr/credits',
+        link: '/credits',
     },
     {
         text: "Feedback",
         icon: <Mail />,
-        link: '/snap-nostr/feedback',
+        link: '/feedback',
     },
     {
         text: "Donate",
         icon: <Bitcoin />,
-        link: '/snap-nostr/donate',
+        link: '/donate',
     },
     {
         text: "Github",
