@@ -75,7 +75,6 @@ SnapNostr is built with simplicity in mind. It's a front-only app like most of t
 
 
 
-<!-- ROADMAP -->
 ## Roadmap
 
 - [x] Credits section - add Sai for domain, Kieran from Snort for letting us use their image proxy server and poet.so for inspiration
@@ -98,7 +97,6 @@ See the [open issues](https://github.com/djhemath/snap-nostr/issues) for a full 
 
 
 
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -112,8 +110,8 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-### Top contributors:
 
+### Contributors:
 <a href="https://github.com/djhemath/snap-nostr/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=djhemath/snap-nostr" alt="contrib.rocks image" />
 </a>
@@ -122,21 +120,11 @@ Don't forget to give the project a star! Thanks again!
 
 
 ## License
-
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Contact
-DJ Hemath - [@djhemath](https://twitter.com/djhemath) - [hem@hemath.dev](mailto:hem@hemath.dev)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 * [Saiyasodharan](https://saiy2k.in) - covered the cost for domain
 * [Kieran](https://snort.social/kieran) - let me use Snort's image proxy server
