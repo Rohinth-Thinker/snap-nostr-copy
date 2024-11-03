@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Canvas } from "../components/Canvas/Canvas";
 // import { Footer } from "../components/Footer/Footer";
 import { Header } from "../components/Header/Header";
@@ -14,6 +17,7 @@ function HomePage() {
   const [ showResponse, setShowResponse ] = useState(true);
   const [ selectedGradient, setSelectedGradient ] = useState<GRADIENT>(GRADIENT.default);
   const [ isDownloading, setIsDownloading ] = useState(false);
+  const [ isCopying, setIsCopying ] = useState(false);
 
   const { note } = useNoteContext();
 
@@ -24,7 +28,10 @@ function HomePage() {
     if (cardEl) {
       getDataURLFromHTMLDOM(cardEl).then((dataURL) =>
         downloadImage("nostr-note", dataURL)
-      ).finally(() => setIsDownloading(false));
+      ).finally(() => {
+        setIsDownloading(false);
+        toast.success('Image ready for download!');
+      });
     }
   }
 
@@ -32,7 +39,11 @@ function HomePage() {
     const cardEl = canvasCardRef.current;
 
     if (cardEl) {
-      getDataURLFromHTMLDOM(cardEl).then(copyDataURL);
+      setIsCopying(true);
+      getDataURLFromHTMLDOM(cardEl).then(copyDataURL).finally(() => {
+        setIsCopying(false);
+        toast.success('Image copied!');
+      });
     }
   }
 
@@ -49,6 +60,21 @@ function HomePage() {
           gradient={selectedGradient}
           onGradientChange={(gradient: GRADIENT) => setSelectedGradient(gradient)}
           isDownloading={isDownloading}
+          isCopying={isCopying}
+        />
+
+        <ToastContainer
+          position="bottom-left"
+          autoClose={1000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
         />
 
         <Canvas

@@ -14,6 +14,7 @@ export type ToolbarProps = {
     gradient: GRADIENT,
     onGradientChange: (gradient: GRADIENT) => void,
     isDownloading: boolean,
+    isCopying: boolean,
 };
 
 export function Toolbar({
@@ -24,6 +25,7 @@ export function Toolbar({
     gradient,
     onGradientChange,
     isDownloading,
+    isCopying,
 }: ToolbarProps) {
 
     const [ isRelayModalOpen, setIsRelayModalOpen ] = useState(false);
@@ -63,7 +65,11 @@ export function Toolbar({
             <Divider />
 
             <Tool onClick={onCopy}>
-                <CopyIcon />
+                {
+                    isCopying
+                    ? <div className="loader"></div>
+                    : <CopyIcon />
+                }
                 <ToolName>Copy</ToolName>
             </Tool>
 
