@@ -8,8 +8,6 @@
     <img src="/public/assets/images/logo.svg" alt="SnapNostr logo" width="300">
   </a>
 
-  <h3 align="center">SnapNostr</h3>
-
   <p align="center">
     Create clean, customizable screenshots of Nostr posts for seamless sharing.
     <br />
