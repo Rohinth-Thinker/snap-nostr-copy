@@ -11,7 +11,7 @@
   <h3 align="center">SnapNostr</h3>
 
   <p align="center">
-    An open-source alternative of [poet.so](https://poet.so) but for [Nostr](https://nostr.com/)!
+    Create clean, customizable screenshots of Nostr posts for seamless sharing.
     <br />
     <br />
     <a href="https://snapnostr.app">Go to SnapNostr</a>
@@ -32,7 +32,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">About SnapNostr</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -47,12 +47,11 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## About SnapNostr
 
 <img src="/public/assets/images/snap-nostr.png" alt="Screenshot of SnapNostr interface">
 
-Create clean, customizable screenshots of Nostr posts for seamless sharing. SnapNostr is an open-source web app designed for Nostr enthusiasts. It allows users to create visually appealing, customizable screenshots of Nostr posts. With a focus on simplicity and a clean user experience.
+ SnapNostr is an open-source web app designed for Nostr enthusiasts inspired by [poet.so](https://poet.so). It allows users to create visually appealing, customizable screenshots of Nostr posts. With a focus on simplicity and a clean user experience.
 
 ### Features
 * **Customizable Design**: Adjust colors, fonts, and layouts for a unique look.
