@@ -8,7 +8,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/djhemath/snap-nostr">
-    <img src="assets/images/logo.svg" alt="SnapNostr logo" width="80" height="80">
+    <img src="/public/assets/images/logo.svg" alt="SnapNostr logo" width="300">
   </a>
 
   <h3 align="center">SnapNostr</h3>
@@ -56,7 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][assets/images/snap-nostr.png]](https://snapnostr.app)
+<img src="/public/assets/images/snap-nostr.png" alt="Screenshot of SnapNostr interface">
 
 Create clean, customizable screenshots of Nostr posts for seamless sharing. SnapNostr is an open-source web app designed for Nostr enthusiasts. It allows users to create visually appealing, customizable screenshots of Nostr posts. With a focus on simplicity and a clean user experience.
 
