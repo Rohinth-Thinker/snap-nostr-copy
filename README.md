@@ -140,7 +140,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [contributors-url]: https://github.com/djhemath/snap-nostr/graphs/contributors
 [stars-shield]: https://img.shields.io/github/stars/djhemath/snap-nostr?style=for-the-badge
 [stars-url]: https://github.com/djhemath/snap-nostr/stargazers
-[license-shield]: https://img.shields.io/github/license/djhemath/snap-nostr?style=for-the-badge
+[license-shield]: https://img.shields.io/badge/license-MIT-green?style=for-the-badge
 [license-url]: https://github.com/djhemath/snap-nostr/blob/main/LICENSE.txt
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
