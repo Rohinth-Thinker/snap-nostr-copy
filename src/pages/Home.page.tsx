@@ -10,12 +10,12 @@ import { Toolbar } from "../components/Toolbar/Toolbar";
 import { HomePageContainer, MainSection } from "./HomePage.styled";
 import { copyDataURL, downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
 import { useNoteContext } from "../contexts/note.context";
-import { GRADIENT, GRADIENTS } from "../shared/constants";
+import { GRADIENT, GRADIENTS, initialGradient } from "../shared/constants";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
   const [ showResponse, setShowResponse ] = useState(true);
-  const [ selectedGradient, setSelectedGradient ] = useState<GRADIENT>(GRADIENT.default);
+  const [ selectedGradient, setSelectedGradient ] = useState<GRADIENT>(initialGradient);
   const [ isDownloading, setIsDownloading ] = useState(false);
   const [ isCopying, setIsCopying ] = useState(false);
 

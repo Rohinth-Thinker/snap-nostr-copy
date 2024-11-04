@@ -155,6 +155,9 @@ export const GRADIENTS = {
   [GRADIENT.iris]: 'linear-gradient(159deg, #c40ef7 0%, #cc0bf8 17%, #b918f9 33%, #9127ed 50%, #7a43ff 67%, #813eff 84%, #7c21e2 100%)',
 };
 
+const gradientValues = Object.values(GRADIENT);
+export const initialGradient = gradientValues[Math.floor(Math.random() * gradientValues.length)];
+
 export const DEFAULT_RELAYS = [
   "wss://relay.damus.io",
   "wss://nostr.wine",
