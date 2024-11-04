@@ -80,6 +80,7 @@ export async function parseText(text: string) {
         type = "gif";
       } else if (
         url.pathname.endsWith(".mp4") ||
+        url.pathname.endsWith(".mov") ||
         url.pathname.endsWith(".webm")
       ) {
         type = "video";
@@ -124,16 +125,16 @@ export function getHTML(content: any[]) {
 
       switch (item.type) {
         case "image":
-          html.push(`<img width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="Image">`);
+          html.push(`<img style="border-radius: 12px" width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="Image">`);
           mediaCount++;
           break;
         case "gif":
-          html.push(`<img width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="GIF">`);
+          html.push(`<img style="border-radius: 12px" width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="GIF">`);
           mediaCount++;
           break;
         case "video":
           html.push(
-            `<video width="100%" src="${item.value}" controls></video>`
+            `<video style="border-radius: 12px" width="100%" src="${item.value}"></video>`
           );
           mediaCount++;
           break;
