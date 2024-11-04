@@ -74,19 +74,12 @@ SnapNostr is built with simplicity in mind. It's a front-only app like most of t
 
 ## Roadmap
 
-- [x] Credits section - add Sai for domain, Kieran from Snort for letting us use their image proxy server and poet.so for inspiration
-- [x] Write a better Readme
-- [x] Add lightning wallet for donations
 - [ ] Write a better parser
 - [ ] Add measuring scale for horizontal and vertical resizing like poet.so
-- [x] Add content to the help button
 - [ ] Light - Dark modes
-- [x] More gradients and styles for the card
 - [x] Feature to add custom set of relays
-- [x] Implement "Response" toggle feature
-- [x] Responsiveness
-- [x] Github link for this project
 - [ ] Multi-language Support
+- [ ] Pre-generate the image eagerly
 
 See the [open issues](https://github.com/djhemath/snap-nostr/issues) for a full list of proposed features (and known issues).
 
