@@ -56,7 +56,7 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
     leftResizeKnob,
     rightResizeKnob,
     bottomResizeKnob,
-    initialWidth: 600,
+    initialWidth: 780,
     initialHeight: 325,
   });
 
