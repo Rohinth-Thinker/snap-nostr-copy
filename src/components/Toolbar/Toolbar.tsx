@@ -33,7 +33,7 @@ export function Toolbar({
     return (
         <ToolbarContainer>
             <ToolbarListItem>
-                <Tool>
+                <Tool aria-label="Gradient picker button">
                     <GradientPicker
                         gradient={gradient}
                         onGradientChange={onGradientChange}
@@ -44,7 +44,7 @@ export function Toolbar({
             </ToolbarListItem>
 
             <ToolbarListItem>
-                <Tool onClick={() => onChangeShowResponse(!showResponse)}>
+                <Tool onClick={() => onChangeShowResponse(!showResponse)} aria-label="Stats toggle button">
                     <HeartIcon isSelected={showResponse} />
                     <ToolName>Stats</ToolName>
                 </Tool>
@@ -52,7 +52,7 @@ export function Toolbar({
 
             <ToolbarListItem>
                 <RelaysToolContainer>
-                    <Tool onClick={() => setIsRelayModalOpen(prev => !prev)}>
+                    <Tool onClick={() => setIsRelayModalOpen(prev => !prev)} aria-label="Relays toggle button">
                         <Relays />
                         <ToolName>Relays</ToolName>
                     </Tool>
@@ -71,7 +71,7 @@ export function Toolbar({
             </ToolbarListItem>
 
             <ToolbarListItem>
-                <Tool onClick={onCopy}>
+                <Tool onClick={onCopy} aria-label="Copy button">
                     {
                         isCopying
                         ? <div className="loader"></div>
@@ -82,7 +82,7 @@ export function Toolbar({
             </ToolbarListItem>
 
             <ToolbarListItem>
-                <Tool $withBackground onClick={onDownload}>
+                <Tool $withBackground onClick={onDownload} aria-label="Download button">
                     {
                         isDownloading
                         ? <div className="loader"></div>

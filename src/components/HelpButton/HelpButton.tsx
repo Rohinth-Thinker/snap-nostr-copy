@@ -68,6 +68,7 @@ export function HelpButton() {
     return (
         <HelpButtonContainer>
             <StyledHelpButton
+                aria-label="Help button"
                 ref={buttonRef}
                 onClick={() => setIsOpen(prev => !prev)}
                 className="rammetto-one-regular">

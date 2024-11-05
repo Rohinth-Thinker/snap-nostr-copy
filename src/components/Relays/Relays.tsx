@@ -66,7 +66,7 @@ export function RelaysModal({
         <RelaysContainer className="relays-modal" style={styles}>
             <RelaysCardHeader>
                 <label htmlFor="relay-address">Relay address</label>
-                <CloseButton onClick={() => onClose()}>
+                <CloseButton onClick={() => onClose()} aria-label="Close relay modal button">
                     <Close />
                 </CloseButton>
             </RelaysCardHeader>
@@ -80,7 +80,7 @@ export function RelaysModal({
                             placeholder="wss://relay.primal.net"
                             ref={inputRef}
                         />
-                        <AddButton onClick={onAddRelay}>
+                        <AddButton onClick={onAddRelay} aria-label="Add a relay button">
                             <Plus/>
                         </AddButton>
                     </InputContainer>
