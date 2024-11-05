@@ -95,7 +95,7 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
               <CardContentContainer>
                 <InnerGradient />
                 <AuthorInfo>
-                  <AuthorImage src={proxyImg(note.author?.image || '', defaultImgProxy)} />
+                  <AuthorImage src={proxyImg(note.author?.image || '', defaultImgProxy)} alt="Image of the Nostr note author" />
                   <AuthorNameAndNip05Container>
                     <AuthorNameContainer>
                         <AuthorName>{note.author?.name}</AuthorName>

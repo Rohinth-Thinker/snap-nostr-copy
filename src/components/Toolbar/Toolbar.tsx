@@ -3,7 +3,7 @@ import { GRADIENT, GRADIENTS } from "../../shared/constants";
 import { Divider } from "../../shared/Global.styled";
 import { GradientPicker } from "../GradientPicker/GradientPicker";
 import { CopyIcon, DownloadIcon, HeartIcon, Relays } from "../Icon/Icon";
-import { ColorTool, RelaysToolContainer, Tool, ToolbarContainer, ToolName } from "./Toolbar.styled";
+import { ColorTool, RelaysToolContainer, Tool, ToolbarContainer, ToolbarListItem, ToolName } from "./Toolbar.styled";
 import { RelaysModal } from "../Relays/Relays";
 
 export type ToolbarProps = {
@@ -32,55 +32,65 @@ export function Toolbar({
 
     return (
         <ToolbarContainer>
-            <Tool>
-                <GradientPicker
-                    gradient={gradient}
-                    onGradientChange={onGradientChange}
-                />
-                <ColorTool $gradient={GRADIENTS[gradient]} />
-                <ToolName>Color</ToolName>
-            </Tool>
-
-            <Tool onClick={() => onChangeShowResponse(!showResponse)}>
-                <HeartIcon isSelected={showResponse} />
-                <ToolName>Stats</ToolName>
-            </Tool>
-
-            <RelaysToolContainer>
-                <Tool onClick={() => setIsRelayModalOpen(prev => !prev)}>
-                    <Relays />
-                    <ToolName>Relays</ToolName>
+            <ToolbarListItem>
+                <Tool>
+                    <GradientPicker
+                        gradient={gradient}
+                        onGradientChange={onGradientChange}
+                    />
+                    <ColorTool $gradient={GRADIENTS[gradient]} />
+                    <ToolName>Color</ToolName>
                 </Tool>
+            </ToolbarListItem>
 
-                <RelaysModal
-                    isOpen={isRelayModalOpen}
-                    onClose={() => {
-                        setIsRelayModalOpen(false);
-                    }}
-                />
-            </RelaysToolContainer>
+            <ToolbarListItem>
+                <Tool onClick={() => onChangeShowResponse(!showResponse)}>
+                    <HeartIcon isSelected={showResponse} />
+                    <ToolName>Stats</ToolName>
+                </Tool>
+            </ToolbarListItem>
 
-            {/* TODO: Add a button to configure relays */}
+            <ToolbarListItem>
+                <RelaysToolContainer>
+                    <Tool onClick={() => setIsRelayModalOpen(prev => !prev)}>
+                        <Relays />
+                        <ToolName>Relays</ToolName>
+                    </Tool>
 
-            <Divider />
+                    <RelaysModal
+                        isOpen={isRelayModalOpen}
+                        onClose={() => {
+                            setIsRelayModalOpen(false);
+                        }}
+                    />
+                </RelaysToolContainer>
+            </ToolbarListItem>
 
-            <Tool onClick={onCopy}>
-                {
-                    isCopying
-                    ? <div className="loader"></div>
-                    : <CopyIcon />
-                }
-                <ToolName>Copy</ToolName>
-            </Tool>
+            <ToolbarListItem>
+                <Divider />
+            </ToolbarListItem>
 
-            <Tool $withBackground onClick={onDownload}>
-                {
-                    isDownloading
-                    ? <div className="loader"></div>
-                    : <DownloadIcon />
-                }
-                <ToolName>Download</ToolName>
-            </Tool>
+            <ToolbarListItem>
+                <Tool onClick={onCopy}>
+                    {
+                        isCopying
+                        ? <div className="loader"></div>
+                        : <CopyIcon />
+                    }
+                    <ToolName>Copy</ToolName>
+                </Tool>
+            </ToolbarListItem>
+
+            <ToolbarListItem>
+                <Tool $withBackground onClick={onDownload}>
+                    {
+                        isDownloading
+                        ? <div className="loader"></div>
+                        : <DownloadIcon />
+                    }
+                    <ToolName>Download</ToolName>
+                </Tool>
+            </ToolbarListItem>
         </ToolbarContainer>
     )
 }

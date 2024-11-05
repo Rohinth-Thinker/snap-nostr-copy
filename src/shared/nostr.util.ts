@@ -125,16 +125,16 @@ export function getHTML(content: any[]) {
 
       switch (item.type) {
         case "image":
-          html.push(`<img style="border-radius: 12px" width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="Image">`);
+          html.push(`<img style="border-radius: 12px" width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="Image embeded in the nostr note">`);
           mediaCount++;
           break;
         case "gif":
-          html.push(`<img style="border-radius: 12px" width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="GIF">`);
+          html.push(`<img style="border-radius: 12px" width="100%" src="${proxyImg(item.value, defaultImgProxy)}" alt="GIF embeded in the nostr note">`);
           mediaCount++;
           break;
         case "video":
           html.push(
-            `<video style="border-radius: 12px" width="100%" src="${item.value}"></video>`
+            `<video style="border-radius: 12px" width="100%" src="${item.value}" alt="video embeded in the nostr note"></video>`
           );
           mediaCount++;
           break;

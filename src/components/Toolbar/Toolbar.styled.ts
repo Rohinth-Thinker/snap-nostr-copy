@@ -34,6 +34,14 @@ export const ToolbarContainer = styled.ul`
     `)}
 `;
 
+export const ToolbarListItem = styled.li`
+    width: 100%;
+
+    ${tablet(`
+        width: auto !important;
+    `)}
+`
+
 export const Tool = styled.button<{$withBackground?: boolean}>`
     display: flex;
     flex-direction: column;
