@@ -1,9 +1,10 @@
-import { useState } from "react";
-import HomePage from "./pages/Home.page";
+import { lazy, useState } from "react";
 import { NoteContext } from "./contexts/note.context";
 import { DEFAULT_RELAYS, initialNote, NostrNote } from "./shared/constants";
 import { RelaysContext } from "./contexts/relays.context";
 import { getRelaysFromLocalStorage, setRelaysInLocalStorage } from "./shared/utils";
+
+const HomePage = lazy(() => import('./pages/Home.page'));
 
 const existingRelays = getRelaysFromLocalStorage();
 
