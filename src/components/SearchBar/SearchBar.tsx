@@ -40,6 +40,7 @@ export function SearchBar() {
                         onPaste={onPaste}
                         onBlur={onInputBlur}
                         onFocus={onInputFocus}
+                        autoFocus
                     />
                     {
                         isLoading
