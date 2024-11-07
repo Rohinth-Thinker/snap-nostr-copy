@@ -20,11 +20,14 @@ export const ToolbarContainer = styled.ul`
 
     ${tablet(`
         flex-direction: row;
-        width: 100%;
+        width: 90%;
         padding: 10px;
         margin: 0;
         justify-content: space-between;
         gap: 0px;
+
+        position: absolute;
+        top: 180px;
 
         & hr {
             width: 1px;
