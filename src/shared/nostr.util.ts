@@ -38,7 +38,7 @@ export async function parseText(text: string) {
     }
 
     const user = await ndk.getUser({ pubkey: pubkey }).fetchProfile();
-    const name = user?.displayName || "";
+    const name = user?.displayName || user?.name || "";
 
     textContent = textContent.replace(
       match[0],
