@@ -10,7 +10,7 @@ import { Toolbar } from "../components/Toolbar/Toolbar";
 import { HomePageContainer, MainSection } from "./HomePage.styled";
 import { copyDataURL, downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
 import { useNoteContext } from "../contexts/note.context";
-import { GRADIENT, GRADIENTS, initialGradient } from "../shared/constants";
+import { GRADIENT, GRADIENTS, initialGradient, NOSTR_BRANDING_COLORS } from "../shared/constants";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
@@ -83,6 +83,7 @@ function HomePage() {
           note={note}
           showResponse={showResponse}
           gradient={GRADIENTS[selectedGradient]}
+          nostrBrandingColor={NOSTR_BRANDING_COLORS[selectedGradient]}
         />
       </MainSection>
 

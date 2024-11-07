@@ -2,7 +2,7 @@ import { forwardRef, useRef } from "react";
 
 import dayjs from "dayjs";
 
-import { VerificationCheck } from "../Icon/Icon";
+import { NostrichHead, VerificationCheck } from "../Icon/Icon";
 import {
   AuthorImage,
   AuthorInfo,
@@ -16,8 +16,11 @@ import {
   CardContainer,
   CardContent,
   CardContentContainer,
+  CardHeader,
   CardWrapper,
   InnerGradient,
+  NostrBrand,
+  NostrName,
   ResizeKnob,
   ResizeKnobContainer,
   ResizeKnobPosition,
@@ -38,6 +41,7 @@ export type CanvasProps = {
   note: NostrNote,
   showResponse: boolean,
   gradient: string,
+  nostrBrandingColor: string,
 };
 
 export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
@@ -45,6 +49,7 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
   note,
   showResponse,
   gradient,
+  nostrBrandingColor,
 }, ref) => {
   const cardWrapperRef = useRef<HTMLDivElement>(null);
   const leftResizeKnob = useRef<HTMLDivElement>(null);
@@ -94,20 +99,27 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(({
               />
               <CardContentContainer>
                 <InnerGradient />
-                <AuthorInfo>
-                  <AuthorImage src={proxyImg(note.author?.image || '', defaultImgProxy)} alt="Image of the Nostr note author" />
-                  <AuthorNameAndNip05Container>
-                    <AuthorNameContainer>
-                        <AuthorName>{note.author?.name}</AuthorName>
-                        <VerificationCheckContainer>
-                            <VerificationIconContainer>
-                                <VerificationCheck />
-                            </VerificationIconContainer>
-                        </VerificationCheckContainer> 
-                    </AuthorNameContainer>
-                    <AuthorNip05>{note.author?.nip05}</AuthorNip05>
-                  </AuthorNameAndNip05Container>
-                </AuthorInfo>
+                <CardHeader>
+                  <AuthorInfo>
+                    <AuthorImage src={proxyImg(note.author?.image || '', defaultImgProxy)} alt="Image of the Nostr note author" />
+                    <AuthorNameAndNip05Container>
+                      <AuthorNameContainer>
+                          <AuthorName>{note.author?.name}</AuthorName>
+                          <VerificationCheckContainer>
+                              <VerificationIconContainer>
+                                  <VerificationCheck />
+                              </VerificationIconContainer>
+                          </VerificationCheckContainer> 
+                      </AuthorNameContainer>
+                      <AuthorNip05>{note.author?.nip05}</AuthorNip05>
+                    </AuthorNameAndNip05Container>
+                  </AuthorInfo>
+
+                  <NostrBrand>
+                    <NostrichHead fill={nostrBrandingColor} />
+                    <NostrName $color={nostrBrandingColor}>Nostr</NostrName>
+                  </NostrBrand>
+                </CardHeader>
                 <TweetContent dangerouslySetInnerHTML={{
                   __html: noteHTML,
                 }} />

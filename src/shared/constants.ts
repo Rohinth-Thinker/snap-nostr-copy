@@ -169,3 +169,10 @@ export const DEFAULT_RELAYS = [
 ];
 
 export const RELAYS_LOCALSTORAGE_KEY = 'relays';
+
+export const NOSTR_BRANDING_COLORS = {
+  [GRADIENT.default]: '#ca067c',
+  [GRADIENT.primal1]: '#a366c5',
+  [GRADIENT.primal2]: '#2c7eec',
+  [GRADIENT.iris]: '#9127ed',
+}

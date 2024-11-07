@@ -212,10 +212,16 @@ export const InnerGradient = styled.div`
   z-index: -1;
 `;
 
+export const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+`;
+
 export const AuthorInfo = styled.div`
   display: flex;
   align-items: center;
-  padding-bottom: 0.75rem;
 `;
 
 export const AuthorImage = styled.img`
@@ -267,6 +273,19 @@ export const AuthorNip05 = styled.div`
   display: flex;
   font-size: 14px;
   white-space: nowrap;
+`;
+
+export const NostrBrand = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+`;
+
+export const NostrName = styled.span<{$color: string}>`
+  font-weight: bold;
+  font-size: 12px;
+  color: ${props => props.$color};
 `;
 
 export const TweetContent = styled.div`
