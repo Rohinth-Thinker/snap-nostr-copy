@@ -1,10 +1,10 @@
-import { Beta, LogoContainer, StyledLogo } from "./Logo.styled";
+import { LogoContainer, StyledLogo } from "./Logo.styled";
 
 export function Logo() {
     return (
         <LogoContainer>
             <StyledLogo className="rammetto-one-regular">SnapNostr</StyledLogo>
-            <Beta>BETA</Beta>
+            {/* <Beta>BETA</Beta> */}
         </LogoContainer>
     );
 }
