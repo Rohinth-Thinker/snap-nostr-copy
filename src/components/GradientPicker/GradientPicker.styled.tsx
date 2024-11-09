@@ -25,7 +25,10 @@ export const GradientPickerStyled = styled.div`
     -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
 
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+
+    width: 300px;
 `;
 
 export const GradientContainer = styled.button`
