@@ -146,6 +146,7 @@ export enum GRADIENT {
   primal1 = 'Primal 1',
   primal2 = 'Primal 2',
   iris = 'Iris',
+  bitcoin = 'Bitcoin',
 };
 
 export const GRADIENTS = {
@@ -153,6 +154,7 @@ export const GRADIENTS = {
   [GRADIENT.primal1]: 'linear-gradient(120deg, #ffb880, #ff827d, #ff7f7f, #de78af, #c76cd5, #a366c5)',
   [GRADIENT.primal2]: 'linear-gradient(159deg, #02e0ff 0%, #2798ee 17%, #2c7eec 33%, #3e63e2 50%, #483fc8 67%, #5129b6 100%, #643cbc 100%)',
   [GRADIENT.iris]: 'linear-gradient(159deg, #c40ef7 0%, #cc0bf8 17%, #b918f9 33%, #9127ed 50%, #7a43ff 67%, #813eff 84%, #7c21e2 100%)',
+  [GRADIENT.bitcoin]: 'linear-gradient(159deg, rgba(247,147,26,1) 0%, rgba(255,168,61,1) 35%, rgba(255,175,76,1) 71%, rgba(255,179,86,1) 100%);',
 };
 
 const gradientValues = Object.values(GRADIENT);
@@ -175,4 +177,5 @@ export const NOSTR_BRANDING_COLORS = {
   [GRADIENT.primal1]: '#a366c5',
   [GRADIENT.primal2]: '#2c7eec',
   [GRADIENT.iris]: '#9127ed',
+  [GRADIENT.bitcoin]: '#fc8a00',
 }
