@@ -199,6 +199,14 @@ export function validateAndGetMatchedNostrEventBech32(text: string) {
       }
     }
 
+  } else if(text.startsWith("nostr:")) {
+    const nip19Text = text.substring(6);
+
+    const match = getNip19Bech32RegexMatch(nip19Text);
+
+    if(match !== null) {
+      bech32 = match[0];
+    }
   } else {
     const match = getNip19Bech32RegexMatch(text);
 
