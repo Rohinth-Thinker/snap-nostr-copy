@@ -84,8 +84,8 @@ export function HelpButton() {
                 }}
             >
                 {
-                    HELP_ITEMS.map(item => (
-                        <HelpItem onClick={() => onHelpItemClick()}>
+                    HELP_ITEMS.map((item, index) => (
+                        <HelpItem key={index}onClick={() => onHelpItemClick()}>
                             <HelpAnchor
                                 href={item.link}
                                 target="_blank"

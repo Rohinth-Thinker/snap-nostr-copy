@@ -31,7 +31,7 @@ export const GradientPickerStyled = styled.div`
     width: 300px;
 `;
 
-export const GradientContainer = styled.button`
+export const GradientContainer = styled.div`
     border: none;
     cursor: pointer;
     background: transparent;
@@ -53,7 +53,7 @@ export const Gradient = styled.div<{$background: string, $isSelected: boolean}>`
     -webkit-transition: box-shadow 0.1s;
     position: relative;
 
-     &::before {
+    &::before {
         content: '';
         position: absolute;
         top: -5px;
