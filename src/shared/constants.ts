@@ -14,6 +14,7 @@ export type NostrNote = {
   zaps: number,
   likes: number,
   reposts: number,
+  postId: string,
 };
 
 export const initialNotes: NostrNote[] = [
@@ -29,6 +30,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 513,
     likes: 32,
     reposts: 7,
+    postId: '',
   },
   {
     html: '<span class="text-content">First they fight you. Then they zap you. Then you\'re frens.</span>',
@@ -42,6 +44,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 396,
     likes: 29,
     reposts: 6,
+    postId: '',
   },
   {
     html: '<span class="text-content">The only threat to Bitcoin is responsible government<br/><br/>So we 💯 safe 😊</span>',
@@ -55,6 +58,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 2414,
     likes: 39,
     reposts: 3,
+    postId: '',
   },
   {
     html: '<span class="text-content">What is the US dollar backed by?<br /><br />tHe fUlL fAiTh aNd cReDiT oF tHe UnItEd sTaTeS<br /><br />What the fuck does this even mean</span>',
@@ -68,6 +72,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 103,
     likes: 30,
     reposts: 1,
+    postId: '',
   },
   {
     html: '<span class="text-content">Every human social order is built on a foundation of violence.<br /><br />Except bitcoin.</span>',
@@ -81,6 +86,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 1084,
     likes: 52,
     reposts: 8,
+    postId: '',
   },
   {
     html: '<span class="text-content">Deleting your Twitter account can actually make a difference.<br /><br />Every time someone opens a link or searches for an old thread in which you participated they will not see your tweets, the entire experience will be broken and they will hate Twitter for that.</span>',
@@ -94,6 +100,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 13322,
     likes: 266,
     reposts: 58,
+    postId: '',
   },
   {
     html: '<span class="text-content">ELON CAN SEND A TWEET FROM THE PRESIDENT\'S ACCOUNT IF HE WANTS.<br /><br />CENTRALIZED SOCIAL MEDIA SHOULD NOT BE USED FOR OFFICIAL COMMS.<br /><br />POSTS SHOULD BE CRYPTOGRAPHICALLY SIGNED.<br /><br />THE NOSTR POST YOU ARE READING NOW WAS SIGNED BY MY PRIVATE KEY AND VERIFIED BY YOUR CLIENT.</span>',
@@ -107,6 +114,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 4834,
     likes: 636,
     reposts: 161,
+    postId: '',
   },
   {
     html: '<span class="text-content">rights aren\'t given, they\'re taken.<br/><br/>bitcoin and nostr help you take and defend them, peacefully.</span>',
@@ -120,6 +128,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 19556,
     likes: 963,
     reposts: 319,
+    postId: '',
   },
   {
     html: '<span class="text-content">I like paranoid crypto anarchists. Good folks doing good work. Big fan.</span>',
@@ -133,6 +142,7 @@ export const initialNotes: NostrNote[] = [
     zaps: 12687,
     likes: 486,
     reposts: 81,
+    postId: '',
   },
 ];
 

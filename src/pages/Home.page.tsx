@@ -11,6 +11,7 @@ import { HomePageContainer, MainSection } from "./HomePage.styled";
 import { copyDataURL, downloadImage, getDataURLFromHTMLDOM } from "../shared/utils";
 import { useNoteContext } from "../contexts/note.context";
 import { GRADIENT, GRADIENTS, initialGradient, NOSTR_BRANDING_COLORS } from "../shared/constants";
+import { trackEvent } from "../mixpanel/functions/trackEvent";
 
 function HomePage() {
   const canvasCardRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,7 @@ function HomePage() {
       ).finally(() => {
         setIsDownloading(false);
         toast.success('Image ready for download!');
+        trackEvent("Image Downloaded", note.postId);
       });
     }
   }
@@ -43,6 +45,7 @@ function HomePage() {
       getDataURLFromHTMLDOM(cardEl).then(copyDataURL).finally(() => {
         setIsCopying(false);
         toast.success('Image copied!');
+        trackEvent("Image Copied", note.postId);
       });
     }
   }

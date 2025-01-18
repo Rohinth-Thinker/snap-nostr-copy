@@ -41,5 +41,11 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script type="module" src="/src/mixpanel/mixpanelSetup.js"></script>
+    <script type="module">
+        mixpanel.track("Page Viewed", { page : "/home" });
+    </script>
+    
   </body>
 </html>

@@ -75,5 +75,11 @@
             <img src="../assets/images/snap-nostr.png" width="750" alt="a screenshot of SnapNostr's interface">
         </aside>
     </main>
+
+    <script type="module" src="/src/mixpanel/mixpanelSetup.js"></script>
+    <script type="module">
+        mixpanel.track("Page Viewed", { page : "/about" });
+    </script>
+    
 </body>
 </html>

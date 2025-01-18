@@ -78,5 +78,11 @@
             return navigator.clipboard.write([clipboardItem]);
         })
     </script>
+
+    <script type="module" src="/src/mixpanel/mixpanelSetup.js"></script>
+    <script type="module">
+        mixpanel.track("Page Viewed", { page : "/donate" });
+    </script>
+
 </body>
 </html>

@@ -31,6 +31,7 @@ export function useNostrEvent(bech32: string) {
                 const { post, author, stats } = await getPostDetails(ndk, noteId);
                 const { likes, replies, reposts, zaps } = stats;
 
+                const postId = post.id;
                 const content = post?.content ||  '';
                 const parsedContent = await parseText(content);
                 const htmlToRender = getHTML(parsedContent);
@@ -43,6 +44,7 @@ export function useNostrEvent(bech32: string) {
                     zaps,
                     likes,
                     reposts,
+                    postId,
                 });
 
                 setIsError(false);

@@ -68,5 +68,11 @@
             </ol>
         </article>
     </main>
+
+    <script type="module" src="/src/mixpanel/mixpanelSetup.js"></script>
+    <script type="module">
+        mixpanel.track("Page Viewed", { page : "/feedback" });
+    </script>
+    
 </body>
 </html>
