@@ -3,7 +3,7 @@ import { NoteContext } from "./contexts/note.context";
 import { DEFAULT_RELAYS, initialNote, NostrNote } from "./shared/constants";
 import { RelaysContext } from "./contexts/relays.context";
 import { getRelaysFromLocalStorage, setRelaysInLocalStorage } from "./shared/utils";
-import { trackEvent } from "./mixpanel/functions/trackEvent";
+import { trackEvent } from "./shared/mixpanel.util";
 
 const HomePage = lazy(() => import('./pages/Home.page'));
 
@@ -14,7 +14,7 @@ function App() {
   const [ relays, setRelays ] = useState<string[]>(existingRelays && existingRelays.length > 0 ? existingRelays : DEFAULT_RELAYS);
 
   useEffect(() => {
-    trackEvent("Image Generated", note.postId);
+    trackEvent("IMAGE_GENERATED", note.postId);
   }, [note])
 
   return (

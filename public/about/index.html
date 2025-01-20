@@ -76,9 +76,11 @@
         </aside>
     </main>
 
-    <script type="module" src="/src/mixpanel/mixpanelSetup.js"></script>
+    <script type="module" src="/assets/js/mixpanelSetup.js"></script>
     <script type="module">
-        mixpanel.track("Page Viewed", { page : "/about" });
+        if(window.mixpanel) {
+            window.mixpanel.track("PAGE_VIEWED", { page : "/about" });
+        }
     </script>
     
 </body>

@@ -1,5 +1,14 @@
-const mixpanelToken = import.meta.env.VITE_MIXPANEL_TOKEN;
-
+const MIXPANEL_TOKEN = "e6aad00382383ac43cc7a7bb01f693f6";
+const MIXPANEL_PROPERTY_BLACKLIST = [
+  "$browser",
+  "$browser_version",
+  "$os",
+  "$screen_height",
+  "$screen_width",
+  "mp_lib",
+  "$lib_version",
+];
+  
 (function (f, b) {
     if (!b.__SV) {
         var a, e, i, g;
@@ -41,9 +50,10 @@ const mixpanelToken = import.meta.env.VITE_MIXPANEL_TOKEN;
     }
 })(document, window.mixpanel || []);
 
-mixpanel.init(mixpanelToken, {
-    debug: true,
+mixpanel.init(MIXPANEL_TOKEN, {
+    // debug: true,
     persistence: "localStorage",
+    property_blacklist: MIXPANEL_PROPERTY_BLACKLIST,
 });
 
 window.mixpanel = mixpanel;
