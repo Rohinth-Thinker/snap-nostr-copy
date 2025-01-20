@@ -14,6 +14,7 @@ export type NostrNote = {
   zaps: number,
   likes: number,
   reposts: number,
+  postId?: string,
 };
 
 export const initialNotes: NostrNote[] = [
