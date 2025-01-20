@@ -1,4 +1,4 @@
-const MIXPANEL_TOKEN = "";
+const MIXPANEL_TOKEN = "94f0ab6bc2c290ca3e1767bdb5799eb6";
 const MIXPANEL_PROPERTY_BLACKLIST = [
   "$browser",
   "$browser_version",
